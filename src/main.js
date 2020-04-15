@@ -1,5 +1,12 @@
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap-vue/dist/bootstrap-vue.css';
+import BootstrapVue from 'bootstrap-vue/dist/bootstrap-vue.esm';
 import Vue from 'vue'
 import App from './App.vue'
+
+
+// Install BootstrapVue
+Vue.use(BootstrapVue)
 
 // Config RedList API
 import {
