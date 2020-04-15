@@ -1,5 +1,6 @@
 <template>
   <div >
+    {{activeAnimal}}
   </div>
 </template>
 
@@ -7,7 +8,7 @@
 export default {
 	name: 'HelloWorld',
 	props: {
-		msg: String
+		activeAnimal: String
 	},
 	data: function () {
         return {

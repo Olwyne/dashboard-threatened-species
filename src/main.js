@@ -3,6 +3,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css';
 import BootstrapVue from 'bootstrap-vue/dist/bootstrap-vue.esm';
 import Vue from 'vue'
 import App from './App.vue'
+import store from "./store/store";
 
 
 // Install BootstrapVue
@@ -27,6 +28,7 @@ Vue.config.productionTip = false
 
 new Vue({
   render: h => h(App),
+  store:store,
 }).$mount('#app')
 
 // API RedList
