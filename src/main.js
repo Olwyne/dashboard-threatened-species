@@ -1,5 +1,8 @@
 import Vue from 'vue'
 import App from './App.vue'
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap-vue/dist/bootstrap-vue.css';
+import BootstrapVue from 'bootstrap-vue/dist/bootstrap-vue.esm';
 
 import {
   Country,
@@ -9,6 +12,9 @@ import { setRedListToken } from 'iucn-red-list';
 setRedListToken('9bb4facb6d23f48efbf424bb05c0c1ef1cf6f468393bc745d42179ac4aca5fee')
 
 Vue.config.productionTip = false
+
+// Install BootstrapVue
+Vue.use(BootstrapVue)
 
 new Vue({
   render: h => h(App),
