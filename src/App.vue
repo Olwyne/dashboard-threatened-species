@@ -7,12 +7,35 @@
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+	name: 'App',
+	components: {
+		HelloWorld
+	},
+	data: function () {
+        return {
+        }
+    },
+    methods: {
+        ... mapActions([
+                'addLocationToStore',
+                'setActivePage',
+                'addWalkToStore',
+                'setActiveTitle'
+        ]),
+    },
+    computed:{
+            ... mapGetters([
+                'getActivePage',
+                'getActiveTitle',
+                'getGameState',
+                'getPreviousPage'
+            ]),
+    },
+	mounted: function(){
+    }
 }
 </script>
 
