@@ -1,14 +1,14 @@
 <template>
   <div >
+    {{getActiveAnimal}}
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
 	name: 'HelloWorld',
-	props: {
-		msg: String
-	},
 	data: function () {
         return {
         }
@@ -17,7 +17,9 @@ export default {
 
     },
     computed:{
-
+       ... mapGetters([
+            'getActiveAnimal'
+        ]),
     },
 	mounted: function(){
     }
