@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-	<Navbar activeAnimal="Panda"/>
-	<HelloWorld :activeAnimal="getActiveAnimal"></HelloWorld>
+	<Navbar />
+	<HelloWorld></HelloWorld>
   </div>
 </template>
 

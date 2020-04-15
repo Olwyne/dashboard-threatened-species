@@ -4,12 +4,15 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 const state= {
-    activeAnimal:null
+    activeAnimal:[]
 }
 
 const mutations= {
-    SET_ACTIVE_ANIMAL(state, props){
-        state.activeAnimal=props
+    ADD_ACTIVE_ANIMAL(state, props){
+        state.activeAnimal.push(props)
+    },
+    REMOVE_ACTIVE_ANIMAL(state,props){
+        state.activeAnimal=state.activeAnimal.filter((item) => item !== props)
     }
 }
 
@@ -21,7 +24,10 @@ const getters={
 
 const actions={
     setActiveAnimal : (store,props) => {
-        store.commit('SET_ACTIVE_ANIMAL', props)
+        store.commit('ADD_ACTIVE_ANIMAL', props)
+    },
+    removeActiveAnimal: (store, props) => {
+        store.commit('REMOVE_ACTIVE_ANIMAL', props)
     }
 }
 
