@@ -1,6 +1,6 @@
 <template>
   <div >
-     test bar chart
+      <apexchart type="bar" height="350" :options="chartOptions" :series="series"></apexchart>
   </div>
 </template>
 
@@ -9,11 +9,32 @@ export default {
 	name: 'HorizontalBarChart',
 	props: {
 		msg: String
-	},
-	data: function () {
-        return {
-        }
-    },
+     },
+        data: function () {
+            return {
+            series: [{
+                data: [400, 430, 448, 470, 540, 580, 690, 1100, 1200, 1380] // replace by the number of individuals of the spiece
+            }],
+            chartOptions: {
+                chart: {
+                    type: 'bar',
+                    height: 350
+                },
+                plotOptions: {
+                    bar: {
+                        horizontal: true,
+                    }
+                },
+                dataLabels: {
+                    enabled: false
+                },
+                xaxis: {
+                    categories: ['South Korea', 'Canada', 'United Kingdom', 'Netherlands', 'Italy', 'France', 'Japan',
+                        'United States', 'China', 'Germany'], // replace by the animal icon
+                }
+            }
+            }
+        },
     methods: {
 
     },

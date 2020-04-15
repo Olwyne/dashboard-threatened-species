@@ -1,6 +1,7 @@
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap-vue/dist/bootstrap-vue.css';
-import BootstrapVue from 'bootstrap-vue/dist/bootstrap-vue.esm';
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+import BootstrapVue from 'bootstrap-vue/dist/bootstrap-vue.esm'
+import VueApexCharts from 'vue-apexcharts'
 import Vue from 'vue'
 import App from './App.vue'
 import store from "./store/store";
@@ -8,6 +9,10 @@ import store from "./store/store";
 
 // Install BootstrapVue
 Vue.use(BootstrapVue)
+
+// Install ApexCharts
+Vue.use(VueApexCharts)
+Vue.component('apexchart', VueApexCharts)
 
 // Config RedList API
 import {
