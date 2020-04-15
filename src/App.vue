@@ -2,26 +2,28 @@
     <div id="app">
         <Navbar />
         <Dashboard />
+		<HelloWorld></HelloWorld>
     </div>
-	<HelloWorld></HelloWorld>
+	
 </template>
 
 <script>
     import Navbar from './components/Navbar.vue'
     import Dashboard from './components/Dashboard.vue'
     import { mapActions, mapGetters } from 'vuex'
-import HelloWorld from './components/HelloWorld.vue'
+	import HelloWorld from './components/HelloWorld.vue'
 
 export default {
 	name: 'App',
 	components: {
 		Navbar,
-		HelloWorld
+		HelloWorld,
+		Dashboard
 	},
 	data: function () {
         return {
 			activeAnimal : 'Bengal Tiger'
-            Dashboard
+
         }
     },
     methods: {
