@@ -11,7 +11,7 @@ new Vue({
 fetch('https://api.gbif.org/v1/dataset/search?country=FR&facet=DECADE&limit=0')
   .then(response => response.json())
   .then(data => {
-    console.log("Nombre d'espèces menacées depuis 1920 :");
+    console.log("Nombre d'espèces depuis 1920 :");
     const result = data.facets[0].counts; // tableau date-nb d'espèces
     
     for(var el in result.sort((a, b) => (a.name > b.name) ? 1 : -1)){ // tri par date croissante
