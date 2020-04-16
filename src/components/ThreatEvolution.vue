@@ -102,7 +102,8 @@ export default {
 		},
 		getInfoAnimal(){
 			let self=this
-            const activeAnimal = ["Bengal Tiger"] //fix error
+            const activeAnimal = self.getActiveAnimal //fix error
+            console.log("getAnimal= "+self.getActiveAnimal)
             var newData = []
             
            
@@ -110,7 +111,7 @@ export default {
            console.log(this.dictionaryScientificNames[element]);
            fetch('http://apiv3.iucnredlist.org/api/v3/species/history/name/'+this.dictionaryScientificNames[element]+'?token=9bb4facb6d23f48efbf424bb05c0c1ef1cf6f468393bc745d42179ac4aca5fee').then(res => res.json()).then(data => {
 				console.log(data.result.map(el => this.dictionaryCategoryInteger[el.code]));
-                newData.push({name:element, data:data.result.map(el => this.dictionaryCategoryInteger[el.code])})
+                newData.push({name:element, data:data.result.map(el => this.dictionaryCategoryInteger[el.code]).filter(el => (el!=undefined)?el:0)})
                 this.chartOptions = {
                     xaxis: {
                         categories:data.result.map(el => el.year).sort((a,b) => (a-b))
