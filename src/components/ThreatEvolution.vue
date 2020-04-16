@@ -185,9 +185,11 @@ export default {
                     
                     allData.find(obj => this.dictionaryScientificNames[obj.name]==data.name).data = data.result.map(el => (el.code!=undefined)?this.dictionaryCategoryInteger[el.code] : -1).reverse()
                                     
-                    
-                        this.series = allData.filter(obj => (this.getActiveAnimal.includes(obj.name)))
+                        
+                        
                         if(this.getActiveAnimal.includes(currentCommonName)){
+                        
+                        this.series = allData.filter(obj => (this.getActiveAnimal.includes(obj.name)))
                     
                         this.chartOptions = {
                             xaxis: {
