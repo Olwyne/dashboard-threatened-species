@@ -68,7 +68,6 @@ export default {
            }
             this.activeAnimal = this.getActiveAnimal
             this.$root.$emit('HorizontalBarChart') 
-            this.$root.$emit('AnimalIDCard') 
             this.$root.$emit('ThreatEvolution') 
         },
         getIconAnimal(){
@@ -94,11 +93,10 @@ export default {
 </script>
 
 <style>
-
     .active{
-        background-color:blue;
+        background-color: white;
     }.myNav {
-        height: 60px;
+        height: 50px;
     }
 
     .myNav .nav-link {
@@ -111,8 +109,13 @@ export default {
     }
 
      .myNav li {
-         width: 6%;
+         width: 4%;
          padding: 0 10px;
+        display:inline;
+         display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 5px 10px;
      }
 
      .myNav a {
@@ -124,6 +127,8 @@ export default {
     .myNav img {
         max-width:100%;
         max-height:100%;
+        display:block;
+        margin:auto;
     }
 
 </style>
