@@ -1,17 +1,17 @@
 <template>
   <div >
-      <!--<HorizontalBarChart />-->
+      <HorizontalBarChart />
       <ThreatEvolution />
   </div>
 </template>
 
 <script>
-    //import HorizontalBarChart from './HorizontalBarChart.vue'
+    import HorizontalBarChart from './HorizontalBarChart.vue'
      import ThreatEvolution from './ThreatEvolution.vue'
 export default {
     name: 'Dashboard', 
     components: {
-        //HorizontalBarChart,
+        HorizontalBarChart,
         ThreatEvolution
      },
 	props: {

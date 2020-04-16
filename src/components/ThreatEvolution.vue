@@ -11,43 +11,15 @@ export default {
 	name: 'ThreatEvolution',
 	data: function () {
         return {
+            correspondance:{
+             "V": 50,
+             "CR": 30,
+             "EN": 10
+            },
           series: [{
-              name: 'Jan',
-              data: [20 ,30 ,40, 80 , 70, 20 ,30 ,40, 80, 70, 20 ,30 ,40, 80 , 70, 20 ,30 ,40, 80 , 70, 20 ,30 ,40, 80 , 70]
-            },
-            {
-              name: 'Feb',
-              data: [20 ,30 ,40, 80 , 70, 20 ,30 ,40, 80, 70, 20 ,30 ,40, 80 , 70, 20 ,30 ,40, 80 , 70, 20 ,30 ,40, 80 , 70]
-            },
-            {
-              name: 'Mar',
-              data: [20 ,30 ,40, 80 , 70, 20 ,30 ,40, 80, 70, 20 ,30 ,40, 80 , 70, 20 ,30 ,40, 80 , 70, 20 ,30 ,40, 80 , 70]
-            },
-            {
-              name: 'Apr',
-              data: [20 ,30 ,40, 80 , 70, 20 ,30 ,40, 80, 70, 20 ,30 ,40, 80 , 70, 20 ,30 ,40, 80 , 70, 20 ,30 ,40, 80 , 70]
-            },
-            {
-              name: 'May',
-              data: [20 ,30 ,40, 80 , 70, 20 ,30 ,40, 80, 70, 20 ,30 ,40, 80 , 70, 20 ,30 ,40, 80 , 70, 20 ,30 ,40, 80 , 70]
-            },
-            {
-              name: 'Jun',
-              data: [20 ,30 ,40, 80 , 70, 20 ,30 ,40, 80, 70, 20 ,30 ,40, 80 , 70, 20 ,30 ,40, 80 , 70, 20 ,30 ,40, 80 , 70]
-            },
-            {
-              name: 'Jul',
-              data: [20 ,30 ,40, 80 , 70, 20 ,30 ,40, 80, 70, 20 ,30 ,40, 80 , 70, 20 ,30 ,40, 80 , 70, 20 ,30 ,40, 80 , 70]
-            },
-            {
-              name: 'Aug',
-              data: [20 ,30 ,40, 80 , 70, 20 ,30 ,40, 80, 70, 20 ,30 ,40, 80 , 70, 20 ,30 ,40, 80 , 70, 20 ,30 ,40, 80 , 70]
-            },
-            {
-              name: 'Sep',
-              data:[20 ,30 ,40, 80 , 70, 20 ,30 ,40, 80, 70, 20 ,30 ,40, 80 , 70, 20 ,30 ,40, 80 , 70, 20 ,30 ,40, 80 , 70]
-            }
-          ],
+          name:"Undefined",
+          data:[]
+          }],
           chartOptions: {
             chart: {
               height: 350,
@@ -94,13 +66,29 @@ export default {
               width: 1
             },
             title: {
-              text: 'HeatMap Chart with Color Range'
+              text: 'Evolution of vulnerability by species'
             },
           },
         }
     },
     methods: {
-
+        updateChart() {	
+			const newData = this.getActiveAnimal
+            this.series[0].name = newData
+			this.getInfoAnimal()
+		},
+		getInfoAnimal(){
+			let self=this
+            var newData = []
+			console.log(self.getActiveAnimal);
+            fetch('http://apiv3.iucnredlist.org/api/v3/species/history/name/Gorilla%20gorilla?token=9bb4facb6d23f48efbf424bb05c0c1ef1cf6f468393bc745d42179ac4aca5fee').then(res => res.json()).then(data => {
+				console.log(data.result.map(el => this.correspondance[el.code]));
+                self.getActiveAnimal.forEach(element => {
+                        newData.push({name:element, data:data.result.map(el => this.correspondance[el.code])})
+                        self.series = newData
+					}); 
+			});
+		}
     },
     computed:{
        ... mapGetters([
@@ -108,6 +96,10 @@ export default {
         ]),
     },
 	mounted: function(){
+        this.updateChart()
+		this.$root.$on('ThreatEvolution', () => {
+            this.updateChart()
+        })
     }
 }
 </script>
