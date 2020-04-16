@@ -1,98 +1,145 @@
 <template>
   <div >
-      <apexchart type="bar" height="350" :options="chartOptions" :series="series"></apexchart>
+    <apexchart type="bar" height="350" :options="chartOptions" :series="series"></apexchart>
   </div>
+
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
 	name: 'HorizontalBarChart',
-	props: {
-		msg: String
-     },
-        data: function () {
-            return {
-                series: [{
-            data: [400, 430, 448, 470, 540, 580, 690, 1100, 1200, 1380]
-          }],
-          chartOptions: {
-            chart: {
-              type: 'bar',
-              height: 380
-            },
-            plotOptions: {
-              bar: {
-                barHeight: '100%',
-                distributed: true,
-                horizontal: true,
-                dataLabels: {
-                  position: 'bottom'
-                },
-              }
-            },
-            colors: ['#33b2df', '#546E7A', '#d4526e', '#13d8aa', '#A5978B', '#2b908f', '#f9a3a4', '#90ee7e',
-              '#f48024', '#69d2e7'
-            ],
-            dataLabels: {
-              enabled: true,
-              textAnchor: 'start',
-              style: {
-                colors: ['#fff']
-              },
-              formatter: function (val, opt) {
-                return opt.w.globals.labels[opt.dataPointIndex] + ":  " + val
-              },
-              offsetX: 0,
-              dropShadow: {
-                enabled: true
-              }
-            },
-            stroke: {
-              width: 1,
-              colors: ['#fff']
-            },
-            xaxis: {
-              categories: ['South Korea', 'Canada', 'United Kingdom', 'Netherlands', 'Italy', 'France', 'Japan',
-                'United States', 'China', 'India'
-              ],
-            },
-            yaxis: {
-              labels: {
-                show: false
-              }
-            },
-            title: {
-                text: 'Custom DataLabels',
-                align: 'center',
-                floating: true
-            },
-            subtitle: {
-                text: 'Category Names as DataLabels inside bars',
-                align: 'center',
-            },
-            tooltip: {
-              theme: 'dark',
-              x: {
-                show: false
-              },
-              y: {
-                title: {
-                  formatter: function () {
-                    return ''
-                  }
-                }
-              }
-            }
-          }
-         }
-        },
+	data: function () {
+		return {
+			series: [{
+				data: []
+			}],
+			chartOptions: {
+				chart: {
+					type: 'bar',
+					height: 380
+				},
+				plotOptions: {
+					bar: {
+						barHeight: '100%',
+						distributed: true,
+						horizontal: true,
+						dataLabels: {
+						position: 'bottom'
+						},
+					}
+				},
+			colors: ["#33b2df"],
+			dataLabels: {
+				enabled: true,
+				textAnchor: 'start',
+				style: {
+				colors: ['#000']
+				},
+				formatter: function (val, opt) {
+				return opt.w.globals.labels[opt.dataPointIndex] + ":  " + val
+				},
+				offsetX: 0,
+				dropShadow: {
+				enabled: false
+				}
+			},
+			stroke: {
+				width: 1,
+				colors: ['#fff']
+			},
+			xaxis: {
+				categories: ["Hello"],
+			},
+			yaxis: {
+				labels: {
+				show: false
+				}
+			},
+			title: {
+				text: 'Population',
+				align: 'center',
+				floating: true
+			},
+			tooltip: {
+				theme: 'dark',
+				x: {
+				show: false
+				},
+				y: {
+				title: {
+					formatter: function () {
+					return ''
+					}
+				}
+				}
+			}
+			}
+		}
+	},
     methods: {
-
+		updateChart() {	
+			const newData = this.getActiveAnimal
+			this.chartOptions = {
+				xaxis: {
+					categories:newData
+				}
+			}
+			this.getInfoAnimal()
+		},
+		getInfoAnimal(){
+			let self=this
+			fetch('http://www.bloowatch.org/developers/json/species').then(res => res.json()).then(data => {
+				const result = data.allSpecies
+				const newData = []
+				const colors = []
+				for(var el in result){
+					const name = result[el].name;
+					self.getActiveAnimal.forEach(element => {
+						if(name==element){
+							const population = result[el].population.replace(',', '')
+							newData.push(population)
+							self.series = [{
+								data: newData
+							}]
+							switch (result[el].status) {
+								case 'Vulnerable':
+									colors.push("#e7c869")
+									break;
+								case 'Endangered':
+									colors.push("#f48024")
+									break;
+								case 'Critically Endangered':
+									colors.push("#f01a33")
+									break;
+								default:
+									colors.push("#33b2df")
+									break;
+							}
+							this.chartOptions = {
+								colors: colors
+							}
+						}
+					});
+				}
+			});
+		}
     },
     computed:{
-
+		... mapGetters([
+            'getActiveAnimal'
+		]),
+		
     },
 	mounted: function(){
+
+		this.updateChart()
+		this.$root.$on('HorizontalBarChart', () => {
+            this.updateChart()
+        })
+
+
     }
 }
 </script>
