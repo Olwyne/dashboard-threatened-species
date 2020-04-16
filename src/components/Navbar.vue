@@ -4,40 +4,40 @@
                     <!-- Those are animal filers, the user can select none, one or several of them, so several animals can be "active"-->
                     <!-- The name of the animals must be replaced by their icons from the API -->
                     <b-nav-item @click="toogleActiveAnimal('Bengal Tiger')" :class="getActiveAnimal.find(element=> element == 'Bengal Tiger') ?'active':''">
-                        <img width="50px" class="placeImage" v-bind:src="'http://www.bloowatch.org'+iconAnimal[0]" />
+                        <img class="placeImage" v-bind:src="'http://www.bloowatch.org'+iconAnimal[0]" />
                         </b-nav-item>
                     <b-nav-item @click="toogleActiveAnimal('Giant Panda')" :class="getActiveAnimal.find(element=> element == 'Giant Panda') ?'active':''">
-                        <img width="50px" class="placeImage" v-bind:src="'http://www.bloowatch.org'+iconAnimal[1]" />
+                        <img class="placeImage" v-bind:src="'http://www.bloowatch.org'+iconAnimal[1]" />
                     </b-nav-item>
                     <b-nav-item @click="toogleActiveAnimal('Blue Whale')" :class="getActiveAnimal.find(element=> element == 'Blue Whale') ?'active':''">
-                        <img width="50px" class="placeImage" v-bind:src="'http://www.bloowatch.org'+iconAnimal[2]" />
+                        <img class="placeImage" v-bind:src="'http://www.bloowatch.org'+iconAnimal[2]" />
                     </b-nav-item>
                     <b-nav-item @click="toogleActiveAnimal('Asian Elephant')" :class="getActiveAnimal.find(element=> element == 'Asian Elephant') ?'active':''">
-                        <img width="50px" class="placeImage" v-bind:src="'http://www.bloowatch.org'+iconAnimal[3]" />
+                        <img class="placeImage" v-bind:src="'http://www.bloowatch.org'+iconAnimal[3]" />
                     </b-nav-item>
                     <b-nav-item @click="toogleActiveAnimal('Gorilla')" :class="getActiveAnimal.find(element=> element == 'Gorilla') ?'active':''">
-                        <img width="50px" class="placeImage" v-bind:src="'http://www.bloowatch.org'+iconAnimal[4]" />
+                        <img class="placeImage" v-bind:src="'http://www.bloowatch.org'+iconAnimal[4]" />
                     </b-nav-item>
                     <b-nav-item @click="toogleActiveAnimal('Snow Leopard')" :class="getActiveAnimal.find(element=> element == 'Snow Leopard') ?'active':''">
-                        <img width="50px" class="placeImage" v-bind:src="'http://www.bloowatch.org'+iconAnimal[5]" />
+                        <img class="placeImage" v-bind:src="'http://www.bloowatch.org'+iconAnimal[5]" />
                     </b-nav-item>
                     <b-nav-item @click="toogleActiveAnimal('Orangutan')" :class="getActiveAnimal.find(element=> element == 'Orangutan') ?'active':''">
-                        <img width="50px" class="placeImage" v-bind:src="'http://www.bloowatch.org'+iconAnimal[6]" />
+                        <img class="placeImage" v-bind:src="'http://www.bloowatch.org'+iconAnimal[6]" />
                     </b-nav-item>
                     <b-nav-item @click="toogleActiveAnimal('Sea Turtle')" :class="getActiveAnimal.find(element=> element == 'Sea Turtle') ?'active':''">
-                        <img width="50px" class="placeImage" v-bind:src="'http://www.bloowatch.org'+iconAnimal[7]" />
+                        <img class="placeImage" v-bind:src="'http://www.bloowatch.org'+iconAnimal[7]" />
                     </b-nav-item>
                     <b-nav-item @click="toogleActiveAnimal('Black Rhino')" :class="getActiveAnimal.find(element=> element == 'Black Rhino') ?'active':''">
-                        <img width="50px" class="placeImage" v-bind:src="'http://www.bloowatch.org'+iconAnimal[8]" />
+                        <img class="placeImage" v-bind:src="'http://www.bloowatch.org'+iconAnimal[8]" />
                     </b-nav-item>
                     <b-nav-item @click="toogleActiveAnimal('African Penguin')" :class="getActiveAnimal.find(element=> element == 'African Penguin') ?'active':''">
-                        <img width="50px" class="placeImage" v-bind:src="'http://www.bloowatch.org'+iconAnimal[9]" />
+                        <img class="placeImage" v-bind:src="'http://www.bloowatch.org'+iconAnimal[9]" />
                     </b-nav-item>
                     <b-nav-item @click="toogleActiveAnimal('Red Panda')" :class="getActiveAnimal.find(element=> element == 'Red Panda') ?'active':''">
-                        <img width="50px" class="placeImage" v-bind:src="'http://www.bloowatch.org'+iconAnimal[10]" />
+                        <img class="placeImage" v-bind:src="'http://www.bloowatch.org'+iconAnimal[10]" />
                     </b-nav-item>
                     <b-nav-item @click="toogleActiveAnimal('Polar Bear')" :class="getActiveAnimal.find(element=> element == 'Polar Bear') ?'active':''">
-                        <img width="50px" class="placeImage" v-bind:src="'http://www.bloowatch.org'+iconAnimal[11]" />
+                        <img class="placeImage" v-bind:src="'http://www.bloowatch.org'+iconAnimal[11]" />
                     </b-nav-item>
                 </b-nav>
     </div>
@@ -93,11 +93,36 @@ export default {
 </script>
 
 <style>
-    .myNav a {
-        color: white;
-    }
+    
     .active{
         background-color:blue;
+    }.myNav {
+        height: 60px;
+    }
+
+    .myNav .nav-link {
+        padding:0;
+    }
+
+     .myNav li, .myNav a {
+        height: 100%;
+        text-align:center;
+    }
+
+     .myNav li {
+         width: 6%;
+         padding: 0 10px;
+     }
+
+     .myNav a {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+     }
+
+    .myNav img {
+        max-width:100%;
+        max-height:100%;
     }
 
 </style>
