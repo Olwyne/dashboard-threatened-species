@@ -96,8 +96,8 @@ export default {
     },
     methods: {
         updateChart() {	
-			const newData = this.getActiveAnimal
-            this.series[0].name = newData
+			//const newData = this.getActiveAnimal
+            //this.series[0].name = newData
 			this.getInfoAnimal()
 		},
 		getInfoAnimal(){
