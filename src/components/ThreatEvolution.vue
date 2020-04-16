@@ -11,10 +11,33 @@ export default {
 	name: 'ThreatEvolution',
 	data: function () {
         return {
-            correspondance:{
+            dictionaryCategoryInteger:{
+            "DD": 100,
+            "LC":90,
+            "NT":70,
              "V": 50,
+             "VU": 50,
+             "EN": 40,
+             "E": 40,
              "CR": 30,
-             "EN": 10
+             "EW":20,
+             "LR/lc":10,
+             "LR/nt":5,
+             "LR/cd":0
+            },
+            dictionaryScientificNames:{
+             "Gorilla": "Gorilla gorilla",
+             "Sea Turtle": "Chelonia mydas",
+             "Orangutan": "Pongo pygmaeus",
+             "Bengal Tiger": "Panthera tigris",
+             "Snow Leopard": "Panthera uncia",
+             "Asian Elephant": "Elephas maximus",
+             "Blue Whale": "Balaenoptera musculus",
+             "Giant Panda": "Ailuropoda melanoleuca",
+             "Polar Bear": "Ursus maritimus",
+             "Red Panda": "Ailurus fulgens",
+             "African Penguin": "Spheniscus demersus",
+             "Black Rhino": "Diceros bicornis"
             },
           series: [{
           name:"Undefined",
@@ -23,7 +46,7 @@ export default {
           chartOptions: {
             chart: {
               height: 350,
-              type: 'heatmap',
+              type: 'heatmap'
             },
             plotOptions: {
               heatmap: {
@@ -80,14 +103,21 @@ export default {
 		getInfoAnimal(){
 			let self=this
             var newData = []
-			console.log(self.getActiveAnimal);
-            fetch('http://apiv3.iucnredlist.org/api/v3/species/history/name/Gorilla%20gorilla?token=9bb4facb6d23f48efbf424bb05c0c1ef1cf6f468393bc745d42179ac4aca5fee').then(res => res.json()).then(data => {
-				console.log(data.result.map(el => this.correspondance[el.code]));
-                self.getActiveAnimal.forEach(element => {
-                        newData.push({name:element, data:data.result.map(el => this.correspondance[el.code])})
-                        self.series = newData
-					}); 
+            
+           
+           self.getActiveAnimal.forEach(element => {
+           console.log(this.dictionaryScientificNames[element]);
+           fetch('http://apiv3.iucnredlist.org/api/v3/species/history/name/'+this.dictionaryScientificNames[element]+'?token=9bb4facb6d23f48efbf424bb05c0c1ef1cf6f468393bc745d42179ac4aca5fee').then(res => res.json()).then(data => {
+				console.log(data.result.map(el => this.dictionaryCategoryInteger[el.code]));
+                newData.push({name:element, data:data.result.map(el => this.dictionaryCategoryInteger[el.code])})
+                this.chartOptions = {
+				xaxis: {
+					categories:data.result.map(el => el.year).sort((a,b) => (a-b))
+				}
+			}
 			});
+           })
+           self.series = newData
 		}
     },
     computed:{
