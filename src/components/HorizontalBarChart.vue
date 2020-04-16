@@ -50,31 +50,32 @@ export default {
 				colors: ['#fff']
 			},
 			xaxis: {
-				categories: ["Hello"],
+                 title: {
+                    text: 'Current number of individuals'
+                }
 			},
-			yaxis: {
+                yaxis: {
+                    title: {
+                        text: 'Species'
+                    },
 				labels: {
 				show: false
 				}
 			},
 			title: {
-				text: 'Population',
+				text: 'Current population',
 				align: 'center',
 				floating: true
 			},
 			tooltip: {
-				theme: 'dark',
-				x: {
-				show: false
-				},
-				y: {
-				title: {
-					formatter: function () {
-					return ''
-					}
-				}
-				}
-			}
+                enabled: false
+            },
+            legend: {
+                show: false
+                },
+                selection: {
+                    enabled: false
+                }
 			}
 		}
 	},
@@ -105,13 +106,13 @@ export default {
 							}]
 							switch (result[el].status) {
 								case 'Vulnerable':
-									colors.push("#e7c869")
+									colors.push("#ffce2f")
 									break;
 								case 'Endangered':
-									colors.push("#f48024")
+									colors.push("#ff7614")
 									break;
 								case 'Critically Endangered':
-									colors.push("#f01a33")
+									colors.push("#f31717")
 									break;
 								default:
 									colors.push("#33b2df")
