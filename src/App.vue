@@ -2,6 +2,7 @@
     <div id="app">
         <PageHead />
         <Navbar />
+        <Pie />
         <Dashboard />
     </div>
 	
@@ -10,6 +11,7 @@
 <script>
     import PageHead from './components/PageHead.vue'
     import Navbar from './components/Navbar.vue'
+    import Pie from './components/Pie.vue'
     import Dashboard from './components/Dashboard.vue'
     import { mapActions, mapGetters } from 'vuex'
     
@@ -18,6 +20,7 @@ export default {
         components: {
         PageHead,
 		Navbar,
+        Pie,
 		Dashboard
 	},
 	data: function () {
