@@ -68,7 +68,6 @@ export default {
            }
             this.activeAnimal = this.getActiveAnimal
             this.$root.$emit('HorizontalBarChart') 
-            this.$root.$emit('AnimalIDCard') 
             this.$root.$emit('ThreatEvolution') 
         },
         getIconAnimal(){

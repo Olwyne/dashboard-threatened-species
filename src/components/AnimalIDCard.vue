@@ -86,22 +86,16 @@ export default {
 		]),
     },
 	mounted: function(){
-        this.selected=this.getActiveAnimal[0]
-        this.getActiveAnimal.forEach(element => {
-            const res = {value: element, text : element}
-            this.options.push(res)
+        fetch('http://www.bloowatch.org/developers/json/species').then(res => res.json()).then(data => {
+            const result = data.allSpecies
+            const newData = []
+            for(var el in result){
+                newData.push(result[el].name)
+            }
+            this.options=newData
+            this.selected=this.options[0]
         })
         this.getInfoAnimal()
-        this.$root.$on('HorizontalBarChart', () => {
-            this.options=[]
-            this.selected=this.getActiveAnimal[0]
-            this.getActiveAnimal.forEach(element => {
-                const res = {value: element, text : element}
-                this.options.push(res)
-            })
-            this.getInfoAnimal()
-        })
- 
     }
 }
 </script>
