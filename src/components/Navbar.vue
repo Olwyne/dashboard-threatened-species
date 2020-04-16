@@ -93,9 +93,7 @@ export default {
 }
 </script>
 
-<style>
-
-    .active{
+<style>.active{
         background-color:blue;
     }.myNav {
         height: 60px;
@@ -113,6 +111,11 @@ export default {
      .myNav li {
          width: 6%;
          padding: 0 10px;
+     display:inline;
+         display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding:10px;
      }
 
      .myNav a {
@@ -124,6 +127,8 @@ export default {
     .myNav img {
         max-width:100%;
         max-height:100%;
+        display:block;
+        margin:auto;
     }
 
 </style>
