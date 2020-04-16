@@ -92,10 +92,11 @@ export default {
 }
 </script>
 
-<style>.active{
-        background-color:blue;
+<style>
+    .active{
+        background-color: white;
     }.myNav {
-        height: 60px;
+        height: 50px;
     }
 
     .myNav .nav-link {
@@ -108,13 +109,13 @@ export default {
     }
 
      .myNav li {
-         width: 6%;
+         width: 4%;
          padding: 0 10px;
-     display:inline;
+        display:inline;
          display: flex;
         flex-direction: column;
         justify-content: center;
-        padding:10px;
+        padding: 5px 10px;
      }
 
      .myNav a {
