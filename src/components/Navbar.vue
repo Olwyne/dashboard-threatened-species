@@ -44,6 +44,7 @@ export default {
            }
             this.activeAnimal = this.getActiveAnimal
             this.$root.$emit('HorizontalBarChart') 
+            this.$root.$emit('AnimalIDCard') 
         },
         getIconAnimal(){
             fetch('http://www.bloowatch.org/developers/json/species').then(res => res.json()).then(data => {
