@@ -24,8 +24,37 @@ export default {
             fontFamily:  undefined,
             color:  '#263238'
           },
-        }
-      },
+        },
+        colors: [function({ value }) {
+            if (value < 82) {
+                return '#f20404'
+            }
+            else if (value >= 82 && value < 916) {
+              return '#582369'
+            }
+            else if (value >= 916 && value < 6338) {
+              return '#0e8fcf'
+            }
+            else if (value >= 6338 && value < 6842) {
+              return '#eef00d'
+            }
+            else if (value >= 6842 && value < 11487) {
+              return '#a7ea0a'
+            }
+            else if (value >= 11487 && value < 14092) {
+              return '#0cc532'
+            }
+            else if (value >= 14092 && value < 17407) {
+              return '#AAAAAA'
+            }
+            else if (value >= 17407 && value < 59860) {
+              return '#0c4ddd'
+            }
+            else {
+                return '#dc3545'
+            }
+          }]
+       },
        series: [{
         data:[]
         }],
@@ -46,6 +75,7 @@ export default {
             this.series.push(result.count);
           });
         }
+        //console.log(this.chartOptions.colors);
      }
   },
   mounted: function(){
