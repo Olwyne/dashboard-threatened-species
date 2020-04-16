@@ -11,6 +11,20 @@ export default {
     return {
       chartOptions: {
         labels: [],
+        title: {
+          text: "Category of species classified with IUCN criteria",
+          align: 'left',
+          margin: 10,
+          offsetX: 0,
+          offsetY: 0,
+          floating: false,
+          style: {
+            fontSize:  '14px',
+            fontWeight:  'bold',
+            fontFamily:  undefined,
+            color:  '#263238'
+          },
+        }
       },
        series: [{
         data:[]
