@@ -93,6 +93,9 @@ export default {
 </script>
 
 <style>
+    .myNav{
+        background-color:blue;
+    }
     .myNav a {
         color: white;
     }
