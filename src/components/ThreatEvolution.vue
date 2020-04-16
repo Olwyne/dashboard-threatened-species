@@ -12,18 +12,24 @@ export default {
 	data: function () {
         return {
             dictionaryCategoryInteger:{
-            "DD": 100,
-            "LC":90,
-            "NT":70,
-             "V": 50,
-             "VU": 50,
-             "EN": 40,
-             "E": 40,
-             "CR": 30,
-             "EW":20,
+            "NE":-1,
+            "K":0,
+            "DD": 0,
+            "LC":10,
+            "NT":20,
+            "R":20,
+            "CD":30,
+             "LR/cd":30,
+             "T":40,
+             "V": 40,
+             "VU": 40,
+             "EN": 50,
+             "E": 50,
+             "CR": 60,
+             "PEW":70,
+             "EW":80,
              "LR/lc":10,
-             "LR/nt":5,
-             "LR/cd":0
+             "LR/nt":20
             },
             dictionaryScientificNames:{
              "Gorilla": "Gorilla gorilla",
@@ -55,28 +61,76 @@ export default {
                 useFillColorAsStroke: true,
                 colorScale: {
                   ranges: [{
-                      from: -30,
-                      to: 5,
-                      name: 'low',
-                      color: '#00A100'
+                      from: 0,
+                      to: 0,
+                      name: 'Data Deficient (DD)',
+                      color: '#AAAAAA'
                     },
                     {
-                      from: 6,
+                      from: 10,
+                      to: 10,
+                      name: 'Least Concern (LC)',
+                      color: '#0c4ddd'
+                    },
+                    {
+                      from: 20,
                       to: 20,
-                      name: 'medium',
-                      color: '#128FD9'
+                      name: 'Near Threatened (NT)',
+                      color: '#0e8fcf'
                     },
                     {
-                      from: 21,
-                      to: 45,
-                      name: 'high',
-                      color: '#FFB200'
+                      from: 30,
+                      to: 30,
+                      name: 'Conservation Dependent (CD)',
+                      color: '#0fdcc7'
                     },
                     {
-                      from: 46,
-                      to: 55,
-                      name: 'extreme',
-                      color: '#FF0000'
+                      from: 40,
+                      to: 40,
+                      name: 'Vulnerable (VU)',
+                      color: '#0cc532'
+                    },
+                    {
+                      from: 50,
+                      to: 50,
+                      name: 'Endangered (EN)',
+                      color: '#a7ea0a'
+                    },
+                    {
+                      from: 60,
+                      to: 60,
+                      name: 'Critically Endangered (CR)',
+                      color: '#eef00d'
+                    },
+                    {
+                      from: 70,
+                      to: 70,
+                      name: 'Possibly Extinct in the Wild (PEW)',
+                      color: '#eb8208'
+                    },
+                    {
+                      from: 80,
+                      to: 80,
+                      name: 'Extinct in the Wild (EW)',
+                      color: '#f20404'
+                    },
+                    {
+                      from: 90,
+                      to: 90,
+                      name: 'Possibly Extinct (PE)',
+                      color: '#aa1271'
+                    },
+                    {
+                      from: 100,
+                      to: 100,
+                      name: 'Extinct (EX)',
+                      color: '#582369'
+                    },
+                    {
+                      from: -1,
+                      to: -1,
+                      name: 'Not Evaluated (NE)',
+                      color: '#555555'
                     }
                   ]
                 }
@@ -95,28 +149,28 @@ export default {
         }
     },
     methods: {
-        updateChart() {	
-			//const newData = this.getActiveAnimal
-            //this.series[0].name = newData
+        updateChart() {
 			this.getInfoAnimal()
 		},
 		getInfoAnimal(){
 			let self=this
             const activeAnimal = self.getActiveAnimal //fix error
-            console.log("getAnimal= "+self.getActiveAnimal)
+            //console.log("getAnimal= "+self.getActiveAnimal)
             var newData = []
             
            
            activeAnimal.forEach(element => {
-           console.log(this.dictionaryScientificNames[element]);
            fetch('http://apiv3.iucnredlist.org/api/v3/species/history/name/'+this.dictionaryScientificNames[element]+'?token=9bb4facb6d23f48efbf424bb05c0c1ef1cf6f468393bc745d42179ac4aca5fee').then(res => res.json()).then(data => {
-				console.log(data.result.map(el => this.dictionaryCategoryInteger[el.code]));
-                newData.push({name:element, data:data.result.map(el => this.dictionaryCategoryInteger[el.code]).filter(el => (el!=undefined)?el:0)})
+				console.log(data.result.map(el => (el.code!=undefined)?this.dictionaryCategoryInteger[el.code] : -1));
+                
+                newData.push({name:element, data:data.result.map(el => (el.code!=undefined)?this.dictionaryCategoryInteger[el.code] : -1).reverse()})
+                
                 this.chartOptions = {
                     xaxis: {
                         categories:data.result.map(el => el.year).sort((a,b) => (a-b))
                     }
                 }
+                
                 self.series = newData
 			})
             
