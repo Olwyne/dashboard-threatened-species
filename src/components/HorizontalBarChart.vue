@@ -13,7 +13,7 @@ export default {
 	data: function () {
 		return {
 			series: [{
-				data: [200]
+				data: []
 			}],
 			chartOptions: {
 				chart: {
@@ -81,13 +81,11 @@ export default {
     methods: {
 		updateChart() {	
 			const newData = this.getActiveAnimal
-			
 			this.chartOptions = {
 				xaxis: {
 					categories:newData
 				}
 			}
-			console.log(this.chartOptions.xaxis.categories)
 			this.getInfoAnimal()
 		},
 		getInfoAnimal(){
@@ -112,8 +110,8 @@ export default {
 								case 'Endangered':
 									colors.push("#f48024")
 									break;
-								case 'Critically endangered':
-									colors.push("#f9a3a4")
+								case 'Critically Endangered':
+									colors.push("#f01a33")
 									break;
 								default:
 									colors.push("#33b2df")
@@ -135,8 +133,12 @@ export default {
 		
     },
 	mounted: function(){
+
 		this.updateChart()
-		setInterval(() => {this.updateChart()},3000)
+		this.$root.$on('HorizontalBarChart', () => {
+            this.updateChart()
+        })
+
 
     }
 }
