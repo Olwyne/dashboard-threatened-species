@@ -1,40 +1,40 @@
 <template>
     <div>
         <div class="id-scroll">
-            <b-form-select v-model="selected" :options="options"></b-form-select>
+            <b-form-select @change="getInfoAnimal()" v-model="selected" :options="options"></b-form-select>
         </div>
         <div class="id-bg">
             <b-row>
                 <b-col class="d-flex justify-content-center align-items-center flex-column">
                     <div class="id-img">
-                        <img class="w-100 p-5" src="http://www.bloowatch.org/images/bengal-tiger_image.png" />
+                        <img class="w-100 p-5" v-bind:src="'http://www.bloowatch.org'+infoAnimal.image" />
                     </div>
                     <div class="id-name">
-                        <p>Bengal Tiger</p>
+                        <p>{{animal}}</p>
                     </div>
                 </b-col>
                 <b-col  class="d-flex justify-content-center align-items-center m-4">
                     <div class="id-infos w-100">
                         <div>
-                            <p>Scientific name : PANTHERA TIGRIS TIGRIS</p>
+                            <p>Scientific name : {{infoAnimal.scientific_name}}</p>
                         </div>
                         <div>
-                            <p>Status : ENDANGERED</p>
+                            <p>Status : {{infoAnimal.status}}</p>
                         </div>
                         <div>
-                            <p>Estimated population : 2,500</p>
+                            <p>Estimated population : {{infoAnimal.population}}</p>
                         </div>
                         <div>
-                            <p>Location: SOUTHEAST ASIA</p>
+                            <p>Location: {{infoAnimal.location}}</p>
                         </div>
                         <div>
-                            <p>Habitat: TROPICAL RAINFORESTS, MARSHES, AND TALL GRASSES</p>
+                            <p>Habitat: {{infoAnimal.habitat}}</p>
                         </div>
                     </div>
                 </b-col>
                 <b-col class="d-flex justify-content-center align-items-center">
                     <div class="id-infos-text w-100 m-4">
-                        <p>The Bengal tiger lives in the Indian subcontinent. It is one of the biggest wild cats alive and is the national animal of India and Bangladesh. This species is at the top of the food chain in the wild and plays a vital link in maintaining the rich diversity of nature. It is listed as endangered species since 2008 and there are only about 2,500 individuals left. Most live in India, but there are a few hundered also in Bangladesh, Nepal and Bhutan. The species is threatened by poaching and loss of habitat caused by climat change.</p>
+                        <p>{{infoAnimal.description}}</p>
                     </div>
                 </b-col>
             </b-row>
@@ -43,27 +43,65 @@
 </template>
 
 <script>
+ import { mapGetters } from 'vuex'
 
 export default {
-	name: 'AnimalIDCard',
+    name: 'AnimalIDCard',
+    
+    props:['animal'],
 	data: function () {
         return {
-            selected: 'a',
-        options: [
-          { value: 'a', text: 'animal1' },
-          { value: 'b', text: 'animal2' },
-          { value: 'c', text: 'animal3' },
-          { value: 'd', text: 'animal4' },
-          { value: 'e', text: 'animal5' }
-        ]
+            infoAnimal:{},
+            selected: null,
+            options: []
         }
     },
     methods: {
+        getInfoAnimal(){
+			let self=this
+			fetch('http://www.bloowatch.org/developers/json/species').then(res => res.json()).then(data => {
+				const result = data.allSpecies
 
+				for(var el in result){
+					const name = result[el].name;
+						if(name==this.selected){
+                            self.infoAnimal = {
+                                scientific_name: result[el].scientific_name,
+                                status: result[el].status,
+                                population: result[el].population,
+                                location: result[el].location,
+                                habitat: result[el].habitat,
+                                description: result[el].description,
+                                image : result[el].image.url
+                            }
+						}
+
+				}
+			});
+		}
     },
     computed:{
+        ... mapGetters([
+			'getActiveAnimal'
+		]),
     },
 	mounted: function(){
+        this.selected=this.getActiveAnimal[0]
+        this.getActiveAnimal.forEach(element => {
+            const res = {value: element, text : element}
+            this.options.push(res)
+        })
+        this.getInfoAnimal()
+        this.$root.$on('HorizontalBarChart', () => {
+            this.options=[]
+            this.selected=this.getActiveAnimal[0]
+            this.getActiveAnimal.forEach(element => {
+                const res = {value: element, text : element}
+                this.options.push(res)
+            })
+            this.getInfoAnimal()
+        })
+ 
     }
 }
 </script>
