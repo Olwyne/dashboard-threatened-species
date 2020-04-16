@@ -1,20 +1,21 @@
 <template>
   <div >
-      <!--<HorizontalBarChart />-->
-      <!--<ThreatEvolution />-->
+      <HorizontalBarChart />
+      <ThreatEvolution />
       <AnimalIDCard />
   </div>
 </template>
 
 <script>
-    //import HorizontalBarChart from './HorizontalBarChart.vue'
-    // import ThreatEvolution from './ThreatEvolution.vue'
+
+    import HorizontalBarChart from './HorizontalBarChart.vue'
+     import ThreatEvolution from './ThreatEvolution.vue'
     import AnimalIDCard from './AnimalIDCard.vue'
 export default {
     name: 'Dashboard', 
     components: {
-        //HorizontalBarChart,
-        //ThreatEvolution,
+        HorizontalBarChart,
+        ThreatEvolution,
         AnimalIDCard
      },
 	props: {

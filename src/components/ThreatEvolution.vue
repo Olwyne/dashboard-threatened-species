@@ -11,47 +11,42 @@ export default {
 	name: 'ThreatEvolution',
 	data: function () {
         return {
+            dictionaryCategoryInteger:{
+            "DD": 100,
+            "LC":90,
+            "NT":70,
+             "V": 50,
+             "VU": 50,
+             "EN": 40,
+             "E": 40,
+             "CR": 30,
+             "EW":20,
+             "LR/lc":10,
+             "LR/nt":5,
+             "LR/cd":0
+            },
+            dictionaryScientificNames:{
+             "Gorilla": "Gorilla gorilla",
+             "Sea Turtle": "Chelonia mydas",
+             "Orangutan": "Pongo pygmaeus",
+             "Bengal Tiger": "Panthera tigris",
+             "Snow Leopard": "Panthera uncia",
+             "Asian Elephant": "Elephas maximus",
+             "Blue Whale": "Balaenoptera musculus",
+             "Giant Panda": "Ailuropoda melanoleuca",
+             "Polar Bear": "Ursus maritimus",
+             "Red Panda": "Ailurus fulgens",
+             "African Penguin": "Spheniscus demersus",
+             "Black Rhino": "Diceros bicornis"
+            },
           series: [{
-              name: 'Jan',
-              data: [20 ,30 ,40, 80 , 70, 20 ,30 ,40, 80, 70, 20 ,30 ,40, 80 , 70, 20 ,30 ,40, 80 , 70, 20 ,30 ,40, 80 , 70]
-            },
-            {
-              name: 'Feb',
-              data: [20 ,30 ,40, 80 , 70, 20 ,30 ,40, 80, 70, 20 ,30 ,40, 80 , 70, 20 ,30 ,40, 80 , 70, 20 ,30 ,40, 80 , 70]
-            },
-            {
-              name: 'Mar',
-              data: [20 ,30 ,40, 80 , 70, 20 ,30 ,40, 80, 70, 20 ,30 ,40, 80 , 70, 20 ,30 ,40, 80 , 70, 20 ,30 ,40, 80 , 70]
-            },
-            {
-              name: 'Apr',
-              data: [20 ,30 ,40, 80 , 70, 20 ,30 ,40, 80, 70, 20 ,30 ,40, 80 , 70, 20 ,30 ,40, 80 , 70, 20 ,30 ,40, 80 , 70]
-            },
-            {
-              name: 'May',
-              data: [20 ,30 ,40, 80 , 70, 20 ,30 ,40, 80, 70, 20 ,30 ,40, 80 , 70, 20 ,30 ,40, 80 , 70, 20 ,30 ,40, 80 , 70]
-            },
-            {
-              name: 'Jun',
-              data: [20 ,30 ,40, 80 , 70, 20 ,30 ,40, 80, 70, 20 ,30 ,40, 80 , 70, 20 ,30 ,40, 80 , 70, 20 ,30 ,40, 80 , 70]
-            },
-            {
-              name: 'Jul',
-              data: [20 ,30 ,40, 80 , 70, 20 ,30 ,40, 80, 70, 20 ,30 ,40, 80 , 70, 20 ,30 ,40, 80 , 70, 20 ,30 ,40, 80 , 70]
-            },
-            {
-              name: 'Aug',
-              data: [20 ,30 ,40, 80 , 70, 20 ,30 ,40, 80, 70, 20 ,30 ,40, 80 , 70, 20 ,30 ,40, 80 , 70, 20 ,30 ,40, 80 , 70]
-            },
-            {
-              name: 'Sep',
-              data:[20 ,30 ,40, 80 , 70, 20 ,30 ,40, 80, 70, 20 ,30 ,40, 80 , 70, 20 ,30 ,40, 80 , 70, 20 ,30 ,40, 80 , 70]
-            }
-          ],
+          name:"Undefined",
+          data:[]
+          }],
           chartOptions: {
             chart: {
               height: 350,
-              type: 'heatmap',
+              type: 'heatmap'
             },
             plotOptions: {
               heatmap: {
@@ -94,13 +89,36 @@ export default {
               width: 1
             },
             title: {
-              text: 'HeatMap Chart with Color Range'
+              text: 'Evolution of vulnerability by species'
             },
           },
         }
     },
     methods: {
-
+        updateChart() {	
+			const newData = this.getActiveAnimal
+            this.series[0].name = newData
+			this.getInfoAnimal()
+		},
+		getInfoAnimal(){
+			let self=this
+            var newData = []
+            
+           
+           self.getActiveAnimal.forEach(element => {
+           console.log(this.dictionaryScientificNames[element]);
+           fetch('http://apiv3.iucnredlist.org/api/v3/species/history/name/'+this.dictionaryScientificNames[element]+'?token=9bb4facb6d23f48efbf424bb05c0c1ef1cf6f468393bc745d42179ac4aca5fee').then(res => res.json()).then(data => {
+				console.log(data.result.map(el => this.dictionaryCategoryInteger[el.code]));
+                newData.push({name:element, data:data.result.map(el => this.dictionaryCategoryInteger[el.code])})
+                this.chartOptions = {
+				xaxis: {
+					categories:data.result.map(el => el.year).sort((a,b) => (a-b))
+				}
+			}
+			});
+           })
+           self.series = newData
+		}
     },
     computed:{
        ... mapGetters([
@@ -108,6 +126,10 @@ export default {
         ]),
     },
 	mounted: function(){
+        this.updateChart()
+		this.$root.$on('ThreatEvolution', () => {
+            this.updateChart()
+        })
     }
 }
 </script>
