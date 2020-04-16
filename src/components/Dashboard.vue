@@ -2,17 +2,21 @@
   <div >
       <HorizontalBarChart />
       <ThreatEvolution />
+      <AnimalIDCard />
   </div>
 </template>
 
 <script>
+
     import HorizontalBarChart from './HorizontalBarChart.vue'
      import ThreatEvolution from './ThreatEvolution.vue'
+    import AnimalIDCard from './AnimalIDCard.vue'
 export default {
     name: 'Dashboard', 
     components: {
         HorizontalBarChart,
-        ThreatEvolution
+        ThreatEvolution,
+        AnimalIDCard
      },
 	props: {
 		msg: String
