@@ -10,25 +10,25 @@
                         <img class="w-100 p-5" v-bind:src="'http://www.bloowatch.org'+infoAnimal.image" />
                     </div>
                     <div class="id-name">
-                        <p>{{animal}}</p>
+                        <p>{{infoAnimal.name}}</p>
                     </div>
                 </b-col>
                 <b-col  class="d-flex justify-content-center align-items-center m-4">
                     <div class="id-infos w-100">
                         <div>
-                            <p>Scientific name : {{infoAnimal.scientific_name}}</p>
+                            <p class="id-title">Scientific name : </p> <p>{{infoAnimal.scientific_name}}</p>
                         </div>
                         <div>
-                            <p>Status : {{infoAnimal.status}}</p>
+                            <p class="id-title">Status : </p><p>{{infoAnimal.status}}</p>
                         </div>
                         <div>
-                            <p>Estimated population : {{infoAnimal.population}}</p>
+                            <p class="id-title">Estimated population : </p><p>{{infoAnimal.population}}</p>
                         </div>
                         <div>
-                            <p>Location: {{infoAnimal.location}}</p>
+                            <p class="id-title">Location : </p><p> {{infoAnimal.location}}</p>
                         </div>
                         <div>
-                            <p>Habitat: {{infoAnimal.habitat}}</p>
+                            <p class="id-title">Habitat : </p><p>{{infoAnimal.habitat}}</p>
                         </div>
                     </div>
                 </b-col>
@@ -66,6 +66,7 @@ export default {
 					const name = result[el].name;
 						if(name==this.selected){
                             self.infoAnimal = {
+                                name: result[el].name,
                                 scientific_name: result[el].scientific_name,
                                 status: result[el].status,
                                 population: result[el].population,
@@ -102,10 +103,27 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+    .id-title {
+        font-family: 'Fugaz One', Avenir, Arial;
+        text-transform: uppercase;
+        color: #dc3545;
+    }
+
     .id-name {
         font-size: 25px;
     }
+
     .id-bg {
-        background-color: #dc3545;
+        border: solid 3px #dc3545 ;
+        border-radius: 20px;
     }
+
+    .id-infos p {
+        display: inline;
+    }
+
+    .id-infos div {
+        margin: 10px 0;
+    }
+
 </style>
