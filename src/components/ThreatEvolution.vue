@@ -171,26 +171,27 @@ export default {
 			this.getInfoAnimal()
 		},
 		getInfoAnimal(){
-			
-			//const newData = []
+        
             const allData = []
             for(var element in this.dictionaryScientificNames){
                allData.push({name:element, data:[]});
-               
-               this.series = allData.filter(obj => (this.getActiveAnimal.includes(obj.name))).map(obj => {
+               if(allData.filter(obj => (this.getActiveAnimal.includes(obj.name))).length > 0){
+                this.series = allData.filter(obj => (this.getActiveAnimal.includes(obj.name))).map(obj => {
                 return {name:obj.name+" (loading...)", data:[]};
                 })
+               }
+               
                fetch("http://apiv3.iucnredlist.org/api/v3/species/history/name/"+this.dictionaryScientificNames[element]+"?token=9bb4facb6d23f48efbf424bb05c0c1ef1cf6f468393bc745d42179ac4aca5fee").then(res => res.json()).then(data => {
                     var currentCommonName = Object.keys(this.dictionaryScientificNames).find(key => this.dictionaryScientificNames[key] === data.name);
                     
                     allData.find(obj => this.dictionaryScientificNames[obj.name]==data.name).data = data.result.map(el => (el.code!=undefined)?this.dictionaryCategoryInteger[el.code] : -1).reverse()
                                     
-                        
+                        if(this.getActiveAnimal.length == 0){
+                        this.series = allData.filter(obj => (this.getActiveAnimal.includes(obj.name)))
+                        }
                         
                         if(this.getActiveAnimal.includes(currentCommonName)){
-                        
                         this.series = allData.filter(obj => (this.getActiveAnimal.includes(obj.name)))
-                    
                         this.chartOptions = {
                             xaxis: {
                                 categories:data.result.map(el => el.year).sort((a,b) => (a-b))
