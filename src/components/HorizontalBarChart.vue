@@ -51,12 +51,18 @@ export default {
 			},
 			xaxis: {
                  title: {
-                    text: 'Current number of individuals'
+                    text: 'Current number of individuals',
+                      style: {
+                     fontWeight: '500',
+                    },
                 }
 			},
                 yaxis: {
                     title: {
-                        text: 'Species'
+                        text: 'Species',
+                    style: {
+                     fontWeight: '500',
+                    },
                     },
 				labels: {
 				show: false
@@ -64,8 +70,13 @@ export default {
 			},
 			title: {
 				text: 'Current population',
-				align: 'center',
-				floating: true
+                align: 'center',
+                margin: 40,
+                floating: true,
+                 style: {
+                     fontWeight: '600',
+                     fontSize: '20px',
+                    },
 			},
 			tooltip: {
                 enabled: false

@@ -1,8 +1,6 @@
 <template>
     <div class="navigation" >
                 <b-nav  align="center" class="bg-danger myNav">
-                    <!-- Those are animal filers, the user can select none, one or several of them, so several animals can be "active"-->
-                    <!-- The name of the animals must be replaced by their icons from the API -->
                     <b-nav-item @click="toogleActiveAnimal('Bengal Tiger')" :class="getActiveAnimal.find(element=> element == 'Bengal Tiger') ?'active':''">
                         <img class="placeImage" v-bind:src="'http://www.bloowatch.org'+iconAnimal[0]" />
                         </b-nav-item>
@@ -97,6 +95,7 @@ export default {
         background-color: white;
     }.myNav {
         height: 50px;
+        margin-bottom:20px;
     }
 
     .myNav .nav-link {
@@ -109,13 +108,12 @@ export default {
     }
 
      .myNav li {
-         width: 4%;
-         padding: 0 10px;
+        width: 8%;
         display:inline;
-         display: flex;
+        display: flex;
         flex-direction: column;
         justify-content: center;
-        padding: 5px 10px;
+        padding: 5px;
      }
 
      .myNav a {
@@ -129,6 +127,13 @@ export default {
         max-height:100%;
         display:block;
         margin:auto;
+    }
+
+    @media (min-width: 767.98px) {
+        .myNav li {
+            width: 4%;
+            padding: 5px 10px;
+        }
     }
 
 </style>

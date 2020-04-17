@@ -1,6 +1,9 @@
 <template>
     <div class="">
-        <div class="dashboard-legend fixed-bottom d-flex justify-content-center flex-column">
+        <div class="dashboard-legend-box fixed-bottom">
+        <div class="legend-title">
+            <p>Threat category with the classification of the International Union for Conservation of Nature</p>
+        </div>
             <div class="dashboard-legend dashboard-align-center position-top">
                 <div class="dashboard-legend-series">
                     <span class="dashboard-legend-marker"  style="background: rgb(170, 170, 170); color: rgb(170, 170, 170);"></span>
@@ -75,6 +78,12 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+    .dashboard-legend-box {
+        padding: 10px 0;
+        background-color: white ;
+        border-top: solid #dc3545 ;
+    }
+
     .dashboard-legend-series span {
         display: inline-block;
     }
@@ -85,10 +94,6 @@
         align-content:center;
         justify-content : center;
         align-items: center;
-        height: 80px;
-        padding: 10px 0;
-        background-color: white ;
-        border-top: solid #dc3545 ;
     }
 
     .dashboard-legend-series {
@@ -111,4 +116,14 @@
         font-weight: 400;
         font-family: Helvetica, Arial, sans-serif;
     }
+
+    .legend-title {
+        text-align: center;
+        font-weight: 600;
+    }
+
+    .legend-title p {
+        margin-bottom: 5px;
+    }
+
 </style>

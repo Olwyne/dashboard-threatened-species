@@ -161,7 +161,12 @@ export default {
 				},
 				title: {
                     text: 'Evolution of vulnerability by species',
-                    align: 'center'
+                    align: 'center',
+                    margin: 40,
+                    style: {
+                        fontWeight: '600',
+                        fontSize: '20px'
+                    }
                 },
                 legend: {
                      show: false

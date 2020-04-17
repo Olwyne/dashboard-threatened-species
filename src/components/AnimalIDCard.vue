@@ -102,11 +102,13 @@ export default {
         display: flex;
         justify-content: center;
         text-align: center;
-        margin-bottom: 10px;
+        margin-top: 20px;
+        margin-bottom: 20px;
     }
 
     .id-scroll p {
-        font-weight: 800;
+        font-weight: 600;
+        font-size: 20px;
         display: flex;
         flex-direction: column;
         justify-content: center;

@@ -1,6 +1,6 @@
 <template>
   <div class="d-flex justify-content-center">
-    <apexchart ref="donut" width="350" type="donut" :options="chartOptions" :series="series"></apexchart>
+    <apexchart ref="donut" width="400" type="donut" :options="chartOptions" :series="series"></apexchart>
   </div>
 </template>
 
@@ -12,17 +12,17 @@ export default {
       chartOptions: {
         labels: [],
         title: {
-          text: "Category of species classified with IUCN criteria",
+          text: "Number of species by threat category",
           align: 'center',
-          margin: 10,
+          margin: 40,
           offsetX: 0,
           offsetY: 0,
           floating: false,
           style: {
-            fontSize:  '14px',
-            fontWeight:  '800',
+            fontSize:  '20px',
+            fontWeight:  '600',
             fontFamily:  undefined,
-            color:  '#263238'
+            color:  'black'
           },
             },
         legend: {

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <b-container fluid>
+        <b-container fluid class="dashboard-container">
             <b-row>
                 <b-col cols="12" md="6">
                     <HorizontalBarChart />
@@ -55,5 +55,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+    .dashboard-container {
+        margin-bottom: 150px;
+    }
 
 </style>
