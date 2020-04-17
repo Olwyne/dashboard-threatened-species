@@ -4,8 +4,8 @@
             <p>Animal informations</p>
             <b-form-select @change="getInfoAnimal()" v-model="selected" :options="options"></b-form-select>
         </div>
-        <div class="id-bg d-flex">
-            <div class="w-50 d-flex flex-column justify-content-center id-img-infos">
+        <div class="id-bg">
+            <div class="d-flex flex-column justify-content-center id-img-infos">
                 <div class="id-img text-center">
                     <img class="p-2" v-bind:src="'http://www.bloowatch.org'+infoAnimal.image" />
                 </div>
@@ -30,7 +30,7 @@
                     </div>
                 </div>
             </div>
-            <div class="id-infos-text w-50 d-flex flex-column justify-content-center">
+            <div class=" d-flex flex-column justify-content-center id-infos-text">
                 <p>{{infoAnimal.description}}</p>
             </div>
         </div>
@@ -38,28 +38,28 @@
 </template>
 
 <script>
- import { mapGetters } from 'vuex'
+    import { mapGetters } from 'vuex'
 
-export default {
-    name: 'AnimalIDCard',
-    
-    props:['animal'],
-	data: function () {
-        return {
-            infoAnimal:{},
-            selected: null,
-            options: []
-        }
-    },
-    methods: {
-        getInfoAnimal(){
-			let self=this
-			fetch('http://www.bloowatch.org/developers/json/species').then(res => res.json()).then(data => {
-				const result = data.allSpecies
+    export default {
+        name: 'AnimalIDCard',
 
-				for(var el in result){
-					const name = result[el].name;
-						if(name==this.selected){
+        props: ['animal'],
+        data: function () {
+            return {
+                infoAnimal: {},
+                selected: null,
+                options: []
+            }
+        },
+        methods: {
+            getInfoAnimal() {
+                let self = this
+                fetch('http://www.bloowatch.org/developers/json/species').then(res => res.json()).then(data => {
+                    const result = data.allSpecies
+
+                    for (var el in result) {
+                        const name = result[el].name;
+                        if (name == this.selected) {
                             self.infoAnimal = {
                                 name: result[el].name,
                                 scientific_name: result[el].scientific_name,
@@ -68,35 +68,34 @@ export default {
                                 location: result[el].location,
                                 habitat: result[el].habitat,
                                 description: result[el].description,
-                                image : result[el].image.url
+                                image: result[el].image.url
                             }
-						}
+                        }
 
-				}
-			});
-		}
-    },
-    computed:{
-        ... mapGetters([
-			'getActiveAnimal'
-		]),
-    },
-	mounted: function(){
-        fetch('http://www.bloowatch.org/developers/json/species').then(res => res.json()).then(data => {
-            const result = data.allSpecies
-            const newData = []
-            for(var el in result){
-                newData.push(result[el].name)
+                    }
+                });
             }
-            this.options=newData
-            this.selected=this.options[0]
-        })
-        this.getInfoAnimal()
+        },
+        computed: {
+            ...mapGetters([
+                'getActiveAnimal'
+            ]),
+        },
+        mounted: function () {
+            fetch('http://www.bloowatch.org/developers/json/species').then(res => res.json()).then(data => {
+                const result = data.allSpecies
+                const newData = []
+                for (var el in result) {
+                    newData.push(result[el].name)
+                }
+                this.options = newData
+                this.selected = this.options[0]
+            })
+            this.getInfoAnimal()
+        }
     }
-}
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
     .id-scroll {
         display: flex;
@@ -106,18 +105,23 @@ export default {
         margin-bottom: 20px;
     }
 
-    .id-scroll p {
-        font-weight: 600;
-        font-size: 20px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        margin: 0 10px;;
-    }
+        .id-scroll p {
+            font-weight: 600;
+            font-size: 14px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin: 0 10px;
+            ;
+        }
+
+        .id-scroll select {
+            font-size: 14px;
+        }
 
     .custom-select, .custom-select:focus {
         border-color: black;
-        box-shadow:none;
+        box-shadow: none;
         width: 50%
     }
 
@@ -130,9 +134,10 @@ export default {
     .id-img {
         height: 30%;
     }
-    .id-img img {
-        height: 90%;
-    }
+
+        .id-img img {
+            width: 100%;
+        }
 
     .id-name {
         font-size: 16px;
@@ -141,9 +146,8 @@ export default {
     }
 
     .id-bg {
-        border: solid 3px #dc3545 ;
+        border: solid 3px #dc3545;
         border-radius: 20px;
-        height: 350px;
         font-size: 14px;
     }
 
@@ -155,12 +159,39 @@ export default {
         margin: 10px 0;
     }
 
-    .id-infos-text, .id-img-infos{
+    .id-infos-text, .id-img-infos {
         margin: 20px;
     }
 
     .id-infos-text {
-        overflow:auto;
+        overflow: auto;
     }
 
+    @media (min-width: 767.98px) {
+        .id-bg {
+            display: flex;
+            height: 350px;
+        }
+
+        .id-img-infos {
+            width: 50%
+        }
+
+        .id-img img {
+            height: 90%;
+            width: auto;
+        }
+
+        .id-infos-text {
+            width: 50%;
+        }
+
+        .id-scroll p {
+            font-size: 20px;
+        }
+
+        .id-scroll select {
+            font-size: 1rem;
+        }
+    }
 </style>

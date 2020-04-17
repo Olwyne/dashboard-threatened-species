@@ -11,35 +11,51 @@
 
 <script>
 
-export default {
-	name: 'PageHead',
-	data: function () {
-        return {
+    export default {
+        name: 'PageHead',
+        data: function () {
+            return {
+            }
+        },
+        methods: {
+
+        },
+        computed: {
+
+        },
+        mounted: function () {
         }
-    },
-    methods: {
-
-    },
-    computed:{
-
-    },
-	mounted: function(){
     }
-}
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
     @import url('https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap');
-    .headLine{
-        font-family : 'Fugaz One', Avenir, Arial;
-        font-size: 20px;
+
+    .headLine {
+        font-family: 'Fugaz One', Avenir, Arial;
+        font-size: 16px;
         color: white;
-        height:60px;
+        height: 60px;
     }
 
-    .logo img, .logo {
-        height:100%;
+    .logo {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
-    
+
+        .logo img {
+            height: 75%;
+        }
+
+    @media (min-width: 767.98px) {
+        .headLine {
+            font-size: 20px;
+        }
+
+        .logo img, .logo {
+            height: 100%;
+        }
+    }
 </style>
