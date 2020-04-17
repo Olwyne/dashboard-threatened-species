@@ -1,6 +1,6 @@
 <template>
     <div class="">
-        <div class="dashboard-legend-box fixed-bottom">
+        <div class="dashboard-legend-box">
         <div class="legend-title">
             <p>Threat category with the classification of the International Union for Conservation of Nature</p>
         </div>
@@ -82,6 +82,7 @@
         padding: 10px 0;
         background-color: white ;
         border-top: solid #dc3545 ;
+        padding: 5px 10px;
     }
 
     .dashboard-legend-series span {
@@ -112,7 +113,7 @@
 
     .dashboard-legend-text  {
         color: rgb(55, 61, 63);
-        font-size: 14px;
+        font-size: 10px;
         font-weight: 400;
         font-family: Helvetica, Arial, sans-serif;
     }
@@ -123,7 +124,20 @@
     }
 
     .legend-title p {
-        margin-bottom: 5px;
+       font-size: 12px;
+       margin-bottom: 5px;
+    }
+
+    @media (min-width: 767.98px) {
+        .dashboard-legend-text{
+            font-size: 14px;
+        }
+        .dashboard-legend-box {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
     }
 
 </style>

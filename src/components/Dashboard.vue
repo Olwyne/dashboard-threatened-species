@@ -16,7 +16,15 @@
                 </b-col>
             </b-row>
         </b-container>
-        <DashboardLegend />
+        <div class="laptop-legend">
+            <DashboardLegend />
+        </div>
+        <div class="fixed-bottom mobile-legend">
+            <b-collapse id="collapse-1">
+                <DashboardLegend />
+            </b-collapse>
+            <b-button v-b-toggle.collapse-1 class="btn btn-danger legend-button w-100">Legend</b-button>
+        </div>
     </div>
 </template>
 
@@ -57,6 +65,21 @@ export default {
 <style scoped>
     .dashboard-container {
         margin-bottom: 150px;
+    }
+
+    .laptop-legend {
+        display: none;
+    }
+
+    @media (min-width: 767.98px) {
+        .mobile-legend{
+            display: none;
+        }
+
+        .laptop-legend{
+            display: block;
+        }
+
     }
 
 </style>
