@@ -1,21 +1,35 @@
 <template>
-  <div >
-      <HorizontalBarChart />
-      <Pie />
-      <ThreatEvolution />
-      <AnimalIDCard />
-  </div>
+    <div>
+        <b-container fluid>
+            <b-row>
+                <b-col cols="12" md="6">
+                    <HorizontalBarChart />
+                </b-col>
+                <b-col cols="12" md="6">
+                    <ThreatEvolution />
+                </b-col>
+                <b-col cols="12" md="6">
+                    <Pie />
+                </b-col>
+                <b-col cols="12" md="6">
+                    <AnimalIDCard />
+                </b-col>
+            </b-row>
+        </b-container>
+        <DashboardLegend />
+    </div>
 </template>
 
 <script>
-
+    import DashboardLegend from './DashboardLegend.vue'
     import HorizontalBarChart from './HorizontalBarChart.vue'
     import Pie from './Pie.vue'
     import ThreatEvolution from './ThreatEvolution.vue'
     import AnimalIDCard from './AnimalIDCard.vue'
 export default {
     name: 'Dashboard', 
-    components: {
+        components: {
+        DashboardLegend,
         HorizontalBarChart,
         Pie,
         ThreatEvolution,

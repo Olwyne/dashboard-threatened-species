@@ -84,61 +84,61 @@ export default {
                       from: 10,
                       to: 10,
                       name: 'Least Concern (LC)',
-                      color: '#0c4ddd'
+                      color: '#e2e82e'
                     },
                     {
                       from: 20,
                       to: 20,
                       name: 'Near Threatened (NT)',
-                      color: '#0e8fcf'
+                      color: '#fcf544'
                     },
                     {
                       from: 30,
                       to: 30,
                       name: 'Conservation Dependent (CD)',
-                      color: '#0fdcc7'
+                      color: '#18d7c5'
                     },
                     {
                       from: 40,
                       to: 40,
                       name: 'Vulnerable (VU)',
-                      color: '#0cc532'
+                      color: '#ffa703'
                     },
                     {
                       from: 50,
                       to: 50,
                       name: 'Endangered (EN)',
-                      color: '#a7ea0a'
+                      color: '#f96000'
                     },
                     {
                       from: 60,
                       to: 60,
                       name: 'Critically Endangered (CR)',
-                      color: '#eef00d'
+                      color: '#df0a00'
                     },
                     {
                       from: 70,
                       to: 70,
                       name: 'Possibly Extinct in the Wild (PEW)',
-                      color: '#eb8208'
+                      color: '#bf0075'
                     },
                     {
                       from: 80,
                       to: 80,
                       name: 'Extinct in the Wild (EW)',
-                      color: '#f20404'
+                      color: '#8c106e'
                     },
                     {
                       from: 90,
                       to: 90,
                       name: 'Possibly Extinct (PE)',
-                      color: '#aa1271'
+                      color: '#3111ba'
                     },
                     {
                       from: 100,
                       to: 100,
                       name: 'Extinct (EX)',
-                      color: '#582369'
+                      color: '#000482'
                     },
                     {
                       from: -1,
@@ -160,8 +160,12 @@ export default {
 				width: 1
 				},
 				title: {
-				text: 'Evolution of vulnerability by species'
-				},
+                    text: 'Evolution of vulnerability by species',
+                    align: 'center'
+                },
+                legend: {
+                     show: false
+                }
 			},
         }
     },

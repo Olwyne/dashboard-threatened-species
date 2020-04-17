@@ -1,5 +1,5 @@
 <template>
-  <div class="example">
+  <div class="d-flex justify-content-center">
     <apexchart ref="donut" width="350" type="donut" :options="chartOptions" :series="series"></apexchart>
   </div>
 </template>
@@ -13,48 +13,51 @@ export default {
         labels: [],
         title: {
           text: "Category of species classified with IUCN criteria",
-          align: 'left',
+          align: 'center',
           margin: 10,
           offsetX: 0,
           offsetY: 0,
           floating: false,
           style: {
             fontSize:  '14px',
-            fontWeight:  'bold',
+            fontWeight:  '800',
             fontFamily:  undefined,
             color:  '#263238'
           },
+            },
+        legend: {
+            show: false
         },
         colors: [function({ value }) {
             if (value < 82) {
-                return '#f20404'
+                return '#8c106e' // EW
             }
             else if (value >= 82 && value < 916) {
-              return '#582369'
+              return '#000482' // EX
             }
             else if (value >= 916 && value < 6338) {
-              return '#0e8fcf'
+              return '#fcf544' // NT
             }
             else if (value >= 6338 && value < 6842) {
-              return '#eef00d'
+              return '#df0a00' // CR
             }
             else if (value >= 6842 && value < 11487) {
-              return '#a7ea0a'
+              return '#f96000' // EN
             }
             else if (value >= 11487 && value < 14092) {
-              return '#0cc532'
+              return '#ffa703' // VU
             }
             else if (value >= 14092 && value < 17407) {
-              return '#AAAAAA'
+              return '#AAAAAA' // DD
             }
             else if (value >= 17407 && value < 59860) {
-              return '#0c4ddd'
+              return '#e2e82e' // LC
             }
             else {
-                return '#dc3545'
+                return '#ffffff'
             }
           }]
-       },
+        },
        series: [{
         data:[]
         }],

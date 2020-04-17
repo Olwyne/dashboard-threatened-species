@@ -106,13 +106,13 @@ export default {
 							}]
 							switch (result[el].status) {
 								case 'Vulnerable':
-									colors.push("#ffce2f")
+									colors.push("#ffa703")
 									break;
 								case 'Endangered':
-									colors.push("#ff7614")
+									colors.push("#f96000")
 									break;
 								case 'Critically Endangered':
-									colors.push("#f31717")
+									colors.push("#df0a00")
 									break;
 								default:
 									colors.push("#33b2df")
