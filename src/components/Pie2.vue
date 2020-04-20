@@ -61,9 +61,6 @@
                         this.series.push(parseInt(result.count));
                     });
                 }
-                console.log("pie2");
-                console.log(this.series);
-                console.log("---");
             }
         },
         mounted: function () {

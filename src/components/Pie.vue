@@ -90,9 +90,6 @@
                         this.series.push(result.count);
                     });
                 }
-                console.log("pie");
-                console.log(this.series);
-                console.log("---");
             }
         },
         mounted: function () {
