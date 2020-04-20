@@ -6,13 +6,13 @@
 
 <script>
     export default {
-        name: 'DonutExample',
+        name: 'Donut',
         data: function () {
             return {
                 chartOptions: {
                     labels: [],
                     title: {
-                        text: "Number of species by threat category",
+                        text: "Species by region",
                         align: 'center',
                         margin: 40,
                         offsetX: 0,
@@ -26,7 +26,7 @@
                         },
                     },
                     legend: {
-                        show: false
+                        show: true
                     },
                     responsive: [
                         {
@@ -40,35 +40,6 @@
                             }
                         }
                     ],
-                    colors: [function ({ value }) {
-                        if (value < 82) {
-                            return '#8c106e' // EW
-                        }
-                        else if (value >= 82 && value < 916) {
-                            return '#000482' // EX
-                        }
-                        else if (value >= 916 && value < 6338) {
-                            return '#fcf544' // NT
-                        }
-                        else if (value >= 6338 && value < 6842) {
-                            return '#df0a00' // CR
-                        }
-                        else if (value >= 6842 && value < 11487) {
-                            return '#f96000' // EN
-                        }
-                        else if (value >= 11487 && value < 14092) {
-                            return '#ffa703' // VU
-                        }
-                        else if (value >= 14092 && value < 17407) {
-                            return '#AAAAAA' // DD
-                        }
-                        else if (value >= 17407 && value < 59860) {
-                            return '#e2e82e' // LC
-                        }
-                        else {
-                            return '#ffffff'
-                        }
-                    }]
                 },
                 series: [{
                     data: []
@@ -82,15 +53,15 @@
             getInfoAnimal() {
                 this.chartOptions = { labels: [], }
                 this.series = [];
-                const arrayOfId = ["EX", "EW", "CR", "EN", "VU", "NT", "LC", "DD"];
+                const arrayOfId = ["eastern_africa", "northeastern_africa", "western_africa", "northern_africa", "central_africa", "pan-africa", "southern_africa", "mediterranean", "europe"];
                 for (let i = 0; i < arrayOfId.length; i++) {
-                    fetch('http://apiv3.iucnredlist.org/api/v3/species/category/' + arrayOfId[i] + '?token=9bb4facb6d23f48efbf424bb05c0c1ef1cf6f468393bc745d42179ac4aca5fee').then(res => res.json()).then(data => {
+                    fetch('http://apiv3.iucnredlist.org/api/v3/speciescount/region/' + arrayOfId[i] + '?token=9bb4facb6d23f48efbf424bb05c0c1ef1cf6f468393bc745d42179ac4aca5fee').then(res => res.json()).then(data => {
                         const result = data;
                         this.chartOptions.labels.push(arrayOfId[i]);
-                        this.series.push(result.count);
+                        this.series.push(parseInt(result.count));
                     });
                 }
-                console.log("pie");
+                console.log("pie2");
                 console.log(this.series);
                 console.log("---");
             }
@@ -98,7 +69,7 @@
         mounted: function () {
 
             this.updateChart()
-            this.$root.$on('Pie', () => {
+            this.$root.$on('Pie2', () => {
                 this.updateChart()
             })
 

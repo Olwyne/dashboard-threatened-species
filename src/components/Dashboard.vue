@@ -2,6 +2,9 @@
     <div>
         <b-container fluid class="dashboard-container">
             <b-row>
+              <b-col cols="12" md="6">
+                    <Pie2 />
+                </b-col>
                 <b-col cols="12" md="6">
                     <HorizontalBarChart />
                 </b-col>
@@ -29,6 +32,7 @@
 </template>
 
 <script>
+    import Pie2 from './Pie2.vue'
     import DashboardLegend from './DashboardLegend.vue'
     import HorizontalBarChart from './HorizontalBarChart.vue'
     import Pie from './Pie.vue'
@@ -40,6 +44,7 @@
             DashboardLegend,
             HorizontalBarChart,
             Pie,
+            Pie2,
             ThreatEvolution,
             AnimalIDCard
         },
