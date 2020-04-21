@@ -1,40 +1,40 @@
 <template>
     <div class="navigation">
         <b-nav align="center" class="bg-danger myNav">
-            <b-nav-item @click="toogleActiveAnimal('Bengal Tiger')" :class="getActiveAnimal.find(element=> element == 'Bengal Tiger') ?'active':''">
+            <b-nav-item @click="toogleActiveAnimal('Bengal Tiger')" :class="getActiveAnimal== 'Bengal Tiger' ?'active':''">
                 <img class="placeImage" v-bind:src="'http://www.bloowatch.org'+iconAnimal[0]" />
             </b-nav-item>
-            <b-nav-item @click="toogleActiveAnimal('Giant Panda')" :class="getActiveAnimal.find(element=> element == 'Giant Panda') ?'active':''">
+            <b-nav-item @click="toogleActiveAnimal('Giant Panda')" :class="getActiveAnimal== 'Giant Panda' ?'active':''">
                 <img class="placeImage" v-bind:src="'http://www.bloowatch.org'+iconAnimal[1]" />
             </b-nav-item>
-            <b-nav-item @click="toogleActiveAnimal('Blue Whale')" :class="getActiveAnimal.find(element=> element == 'Blue Whale') ?'active':''">
+            <b-nav-item @click="toogleActiveAnimal('Blue Whale')" :class="getActiveAnimal == 'Blue Whale' ?'active':''">
                 <img class="placeImage" v-bind:src="'http://www.bloowatch.org'+iconAnimal[2]" />
             </b-nav-item>
-            <b-nav-item @click="toogleActiveAnimal('Asian Elephant')" :class="getActiveAnimal.find(element=> element == 'Asian Elephant') ?'active':''">
+            <b-nav-item @click="toogleActiveAnimal('Asian Elephant')" :class="getActiveAnimal== 'Asian Elephant' ?'active':''">
                 <img class="placeImage" v-bind:src="'http://www.bloowatch.org'+iconAnimal[3]" />
             </b-nav-item>
-            <b-nav-item @click="toogleActiveAnimal('Gorilla')" :class="getActiveAnimal.find(element=> element == 'Gorilla') ?'active':''">
+            <b-nav-item @click="toogleActiveAnimal('Gorilla')" :class="getActiveAnimal== 'Gorilla' ?'active':''">
                 <img class="placeImage" v-bind:src="'http://www.bloowatch.org'+iconAnimal[4]" />
             </b-nav-item>
-            <b-nav-item @click="toogleActiveAnimal('Snow Leopard')" :class="getActiveAnimal.find(element=> element == 'Snow Leopard') ?'active':''">
+            <b-nav-item @click="toogleActiveAnimal('Snow Leopard')" :class="getActiveAnimal== 'Snow Leopard' ?'active':''">
                 <img class="placeImage" v-bind:src="'http://www.bloowatch.org'+iconAnimal[5]" />
             </b-nav-item>
-            <b-nav-item @click="toogleActiveAnimal('Orangutan')" :class="getActiveAnimal.find(element=> element == 'Orangutan') ?'active':''">
+            <b-nav-item @click="toogleActiveAnimal('Orangutan')" :class="getActiveAnimal == 'Orangutan' ?'active':''">
                 <img class="placeImage" v-bind:src="'http://www.bloowatch.org'+iconAnimal[6]" />
             </b-nav-item>
-            <b-nav-item @click="toogleActiveAnimal('Sea Turtle')" :class="getActiveAnimal.find(element=> element == 'Sea Turtle') ?'active':''">
+            <b-nav-item @click="toogleActiveAnimal('Sea Turtle')" :class="getActiveAnimal == 'Sea Turtle' ?'active':''">
                 <img class="placeImage" v-bind:src="'http://www.bloowatch.org'+iconAnimal[7]" />
             </b-nav-item>
-            <b-nav-item @click="toogleActiveAnimal('Black Rhino')" :class="getActiveAnimal.find(element=> element == 'Black Rhino') ?'active':''">
+            <b-nav-item @click="toogleActiveAnimal('Black Rhino')" :class="getActiveAnimal== 'Black Rhino' ?'active':''">
                 <img class="placeImage" v-bind:src="'http://www.bloowatch.org'+iconAnimal[8]" />
             </b-nav-item>
-            <b-nav-item @click="toogleActiveAnimal('African Penguin')" :class="getActiveAnimal.find(element=> element == 'African Penguin') ?'active':''">
+            <b-nav-item @click="toogleActiveAnimal('African Penguin')" :class="getActiveAnimal == 'African Penguin' ?'active':''">
                 <img class="placeImage" v-bind:src="'http://www.bloowatch.org'+iconAnimal[9]" />
             </b-nav-item>
-            <b-nav-item @click="toogleActiveAnimal('Red Panda')" :class="getActiveAnimal.find(element=> element == 'Red Panda') ?'active':''">
+            <b-nav-item @click="toogleActiveAnimal('Red Panda')" :class="getActiveAnimal == 'Red Panda' ?'active':''">
                 <img class="placeImage" v-bind:src="'http://www.bloowatch.org'+iconAnimal[10]" />
             </b-nav-item>
-            <b-nav-item @click="toogleActiveAnimal('Polar Bear')" :class="getActiveAnimal.find(element=> element == 'Polar Bear') ?'active':''">
+            <b-nav-item @click="toogleActiveAnimal('Polar Bear')" :class="getActiveAnimal== 'Polar Bear' ?'active':''">
                 <img class="placeImage" v-bind:src="'http://www.bloowatch.org'+iconAnimal[11]" />
             </b-nav-item>
         </b-nav>
@@ -57,13 +57,7 @@
                 'removeActiveAnimal'
             ]),
             toogleActiveAnimal(animal) {
-                const res = this.activeAnimal.filter((item) => item == animal)
-                if (res.length > 0) {
-                    this.removeActiveAnimal(animal)
-                }
-                else {
-                    this.setActiveAnimal(animal)
-                }
+                this.setActiveAnimal(animal)
                 this.activeAnimal = this.getActiveAnimal
                 this.$root.$emit('HorizontalBarChart')
                 this.$root.$emit('ThreatEvolution')

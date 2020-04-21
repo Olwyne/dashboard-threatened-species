@@ -46,7 +46,6 @@
         data: function () {
             return {
                 infoAnimal: {},
-                selected: null,
                 options: []
             }
         },
@@ -58,7 +57,7 @@
 
                     for (var el in result) {
                         const name = result[el].name;
-                        if (name == this.selected) {
+                        if (name == this.getActiveAnimal) {
                             self.infoAnimal = {
                                 name: result[el].name,
                                 scientific_name: result[el].scientific_name,
@@ -81,16 +80,10 @@
             ]),
         },
         mounted: function () {
-            fetch('http://www.bloowatch.org/developers/json/species').then(res => res.json()).then(data => {
-                const result = data.allSpecies
-                const newData = []
-                for (var el in result) {
-                    newData.push(result[el].name)
-                }
-                this.options = newData
-                this.selected = this.options[0]
-            })
             this.getInfoAnimal()
+            this.$root.$on('ThreatEvolution', () => {
+                 this.getInfoAnimal()
+            })
         }
     }
 </script>

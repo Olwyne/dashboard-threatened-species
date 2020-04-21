@@ -4,12 +4,12 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 const state= {
-    activeAnimal:[]
+    activeAnimal:null
 }
 
 const mutations= {
     ADD_ACTIVE_ANIMAL(state, props){
-        state.activeAnimal.push(props)
+        state.activeAnimal=(props)
     },
     REMOVE_ACTIVE_ANIMAL(state,props){
         state.activeAnimal=state.activeAnimal.filter((item) => item !== props)

@@ -58,7 +58,7 @@
                     "African Penguin": "Spheniscus demersus",
                     "Black Rhino": "Diceros bicornis"
                 },
-                activeAnimal: [],
+                activeAnimal: null,
                 series: [{
                     name: "Loading",
                     data: []
@@ -223,8 +223,8 @@
                 const allData = []
                 for (var element in this.dictionaryScientificNames) {
                     allData.push({ name: element, data: [] });
-                    if (allData.filter(obj => (this.getActiveAnimal.includes(obj.name))).length > 0) {
-                        this.series = allData.filter(obj => (this.getActiveAnimal.includes(obj.name))).map(obj => {
+                    if (allData.filter(obj => (this.getActiveAnimal==obj.name)).length > 0) {
+                        this.series = allData.filter(obj => (this.getActiveAnimal==obj.name)).map(obj => {
                             return { name: obj.name + " (loading...)", data: [] };
                         })
                     }
