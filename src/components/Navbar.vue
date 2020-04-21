@@ -59,7 +59,6 @@
             toogleActiveAnimal(animal) {
                 this.setActiveAnimal(animal)
                 this.activeAnimal = this.getActiveAnimal
-                this.$root.$emit('HorizontalBarChart')
                 this.$root.$emit('ThreatEvolution')
             },
             getIconAnimal() {

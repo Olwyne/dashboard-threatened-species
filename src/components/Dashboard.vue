@@ -9,10 +9,10 @@
                     <ThreatEvolution />
                 </b-col>
                 <b-col cols="12" md="6">
-                    <Pie />
+                    <NumberSpeciesChar />
                 </b-col>
                 <b-col cols="12" md="6">
-                    <Pie2 />
+                    <RegionChar />
                 </b-col>
             </b-row>
         </b-container>
@@ -20,15 +20,15 @@
 </template>
 
 <script>
-    import Pie2 from './Pie2.vue'
-    import Pie from './Pie.vue'
+    import NumberSpeciesChar from './NumberSpeciesChar.vue'
+    import RegionChar from './RegionChar.vue'
     import ThreatEvolution from './ThreatEvolution.vue'
     import AnimalIDCard from './AnimalIDCard.vue'
     export default {
         name: 'Dashboard',
         components: {
-            Pie,
-            Pie2,
+            NumberSpeciesChar,
+            RegionChar,
             ThreatEvolution,
             AnimalIDCard
         },

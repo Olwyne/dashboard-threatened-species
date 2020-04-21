@@ -67,11 +67,6 @@
         },
         mounted: function () {
             this.updateChart()
-            this.$root.$on('Pie2', () => {
-                this.updateChart()
-            })
-
-
         }
     }
 </script>
