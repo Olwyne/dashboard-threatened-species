@@ -8,27 +8,27 @@
                 <b-col cols="12" md="6">
                     <ThreatEvolution />
                 </b-col>
-                <!--<b-col cols="12" md="6">
+                <b-col cols="12" md="6">
                     <Pie />
                 </b-col>
                 <b-col cols="12" md="6">
                     <Pie2 />
-                </b-col>-->
+                </b-col>
             </b-row>
         </b-container>
     </div>
 </template>
 
 <script>
-   /* import Pie2 from './Pie2.vue'
-    import Pie from './Pie.vue'*/
+    import Pie2 from './Pie2.vue'
+    import Pie from './Pie.vue'
     import ThreatEvolution from './ThreatEvolution.vue'
     import AnimalIDCard from './AnimalIDCard.vue'
     export default {
         name: 'Dashboard',
         components: {
-         /*   Pie,
-            Pie2,*/
+            Pie,
+            Pie2,
             ThreatEvolution,
             AnimalIDCard
         },

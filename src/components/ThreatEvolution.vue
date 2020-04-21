@@ -150,6 +150,10 @@
                             }
                         }
                     },
+                    fill: {
+                        type: 'solid',
+                        opacity: 1,
+                    },
                     dataLabels: {
                         enabled: false
                     },
