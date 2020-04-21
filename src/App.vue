@@ -1,51 +1,52 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <div id="app">
+        <PageHead />
+        <Navbar />
+        <Dashboard />
+    </div>
+
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-import { mapActions, mapGetters } from 'vuex'
+    import PageHead from './components/PageHead.vue'
+    import Navbar from './components/Navbar.vue'
+    import Dashboard from './components/Dashboard.vue'
+    import { mapActions, mapGetters } from 'vuex'
 
-export default {
-	name: 'App',
-	components: {
-		HelloWorld
-	},
-	data: function () {
-        return {
-        }
-    },
-    methods: {
-        ... mapActions([
-                'addLocationToStore',
-                'setActivePage',
-                'addWalkToStore',
-                'setActiveTitle'
-        ]),
-    },
-    computed:{
-            ... mapGetters([
-                'getActivePage',
-                'getActiveTitle',
-                'getGameState',
-                'getPreviousPage'
+    export default {
+        name: 'App',
+        components: {
+            PageHead,
+            Navbar,
+            Dashboard
+        },
+        data: function () {
+            return {
+                activeAnimal: 'Bengal Tiger'
+
+            }
+        },
+        methods: {
+            ...mapActions([
+                'setActiveAnimal'
             ]),
-    },
-	mounted: function(){
+        },
+        computed: {
+            ...mapGetters([
+                'getActiveAnimal'
+            ]),
+        },
+        mounted: function () {
+            this.setActiveAnimal(this.activeAnimal)
+        },
+
     }
-}
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+    #app {
+        font-family: Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
 </style>
