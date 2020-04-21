@@ -83,8 +83,7 @@
                 this.chartOptions = { labels: [], }
                 this.series = [];
                 const arrayOfId = ["EX", "EW", "CR", "EN", "VU", "NT", "LC", "DD"];
-                const arrayOfName = ["a remplir", "EW", "CR", "EN", "VU", "NT", "LC", "DD"];
-                //const arrayOfId = ["Extinct", "Extinct in the Wild", "Critically Endangered", "Endangered", "Vulnerable", "Near Threatened", "Least Concern", "Data Deficient"];
+                const arrayOfName = ["Extinct", "Extinct in the Wild", "Critically Endangered", "Endangered", "Vulnerable", "Near Threatened", "Least Concern", "Data Deficient"];
                 for (let i = 0; i < arrayOfId.length; i++) {
                     fetch('http://apiv3.iucnredlist.org/api/v3/species/category/' + arrayOfId[i] + '?token=9bb4facb6d23f48efbf424bb05c0c1ef1cf6f468393bc745d42179ac4aca5fee').then(res => res.json()).then(data => {
                         const result = data;
