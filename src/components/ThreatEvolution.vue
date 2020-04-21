@@ -77,73 +77,73 @@
                                 ranges: [{
                                     from: 0,
                                     to: 0,
-                                    name: 'Data Deficient (DD)',
+                                    name: 'Data Deficient',
                                     color: '#AAAAAA'
                                 },
                                 {
                                     from: 10,
                                     to: 10,
-                                    name: 'Least Concern (LC)',
+                                    name: 'Least Concern',
                                     color: '#e2e82e'
                                 },
                                 {
                                     from: 20,
                                     to: 20,
-                                    name: 'Near Threatened (NT)',
+                                    name: 'Near Threatened',
                                     color: '#fcf544'
                                 },
                                 {
                                     from: 30,
                                     to: 30,
-                                    name: 'Conservation Dependent (CD)',
+                                    name: 'Conservation Dependent',
                                     color: '#18d7c5'
                                 },
                                 {
                                     from: 40,
                                     to: 40,
-                                    name: 'Vulnerable (VU)',
+                                    name: 'Vulnerable',
                                     color: '#ffa703'
                                 },
                                 {
                                     from: 50,
                                     to: 50,
-                                    name: 'Endangered (EN)',
+                                    name: 'Endangered',
                                     color: '#f96000'
                                 },
                                 {
                                     from: 60,
                                     to: 60,
-                                    name: 'Critically Endangered (CR)',
+                                    name: 'Critically Endangered',
                                     color: '#df0a00'
                                 },
                                 {
                                     from: 70,
                                     to: 70,
-                                    name: 'Possibly Extinct in the Wild (PEW)',
+                                    name: 'Possibly Extinct in the Wild',
                                     color: '#bf0075'
                                 },
                                 {
                                     from: 80,
                                     to: 80,
-                                    name: 'Extinct in the Wild (EW)',
+                                    name: 'Extinct in the Wild',
                                     color: '#8c106e'
                                 },
                                 {
                                     from: 90,
                                     to: 90,
-                                    name: 'Possibly Extinct (PE)',
+                                    name: 'Possibly Extinct',
                                     color: '#3111ba'
                                 },
                                 {
                                     from: 100,
                                     to: 100,
-                                    name: 'Extinct (EX)',
+                                    name: 'Extinct',
                                     color: '#000482'
                                 },
                                 {
                                     from: -1,
                                     to: -1,
-                                    name: 'Not Evaluated (NE)',
+                                    name: 'Not Evaluated',
                                     color: '#555555'
                                 }
                                 ]

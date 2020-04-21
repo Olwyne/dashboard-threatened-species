@@ -26,7 +26,8 @@
                         },
                     },
                     legend: {
-                        show: true
+                        show: true,
+                        position: 'bottom',
                     },
                     responsive: [
                         {
