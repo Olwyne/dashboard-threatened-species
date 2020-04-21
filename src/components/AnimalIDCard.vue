@@ -135,7 +135,7 @@
         margin: 20px;
     }
 
-    .id-infos-text {
+    .id-infos-text p{
         overflow: auto;
     }
 
