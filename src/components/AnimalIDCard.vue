@@ -54,7 +54,6 @@
                 let self = this
                 fetch('http://www.bloowatch.org/developers/json/species').then(res => res.json()).then(data => {
                     const result = data.allSpecies
-
                     for (var el in result) {
                         const name = result[el].name;
                         if (name == this.getActiveAnimal) {
