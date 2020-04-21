@@ -1,8 +1,7 @@
 <template>
     <div>
-        <div class="id-scroll">
+        <div class="id-head-title">
             <p>Animal informations</p>
-            <b-form-select @change="getInfoAnimal()" v-model="selected" :options="options"></b-form-select>
         </div>
         <div class="id-bg">
             <div class="d-flex flex-column justify-content-center id-img-infos">
@@ -97,32 +96,12 @@
 </script>
 
 <style scoped>
-    .id-scroll {
-        display: flex;
-        justify-content: center;
-        text-align: center;
-        margin-top: 20px;
+    .id-head-title {
+        font-weight: 600;
+        font-size: 14px;
+       text-align: center;
+        margin-top: 19px;
         margin-bottom: 20px;
-    }
-
-        .id-scroll p {
-            font-weight: 600;
-            font-size: 14px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            margin: 0 10px;
-            ;
-        }
-
-        .id-scroll select {
-            font-size: 14px;
-        }
-
-    .custom-select, .custom-select:focus {
-        border-color: black;
-        box-shadow: none;
-        width: 50%
     }
 
     .id-title {
@@ -135,9 +114,9 @@
         height: 30%;
     }
 
-        .id-img img {
-            width: 100%;
-        }
+    .id-img img {
+        width: 100%;
+    }
 
     .id-name {
         font-size: 16px;
@@ -186,12 +165,8 @@
             width: 50%;
         }
 
-        .id-scroll p {
+        .id-head-title {
             font-size: 20px;
-        }
-
-        .id-scroll select {
-            font-size: 1rem;
         }
     }
 </style>

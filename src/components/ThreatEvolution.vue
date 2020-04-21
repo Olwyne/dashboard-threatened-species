@@ -168,6 +168,29 @@
                             fontSize: '20px'
                         }
                     },
+                    legend: {
+                        showForSingleSeries: true,
+                        position: 'bottom',
+                    },
+                    states: {
+                        normal: {
+                            filter: {
+                                type: 'none',
+                                value: 0,
+                            }
+                        },
+                        hover: {
+                            filter: {
+                                type: 'none',
+                            }
+                        },
+                        active: {
+                            allowMultipleDataPointsSelection: false,
+                            filter: {
+                                type: 'none',
+                            }
+                        },
+                    },
                     responsive: [
                         {
                             breakpoint: 768,
@@ -187,9 +210,6 @@
                             }
                         }
                     ],
-                    legend: {
-                        show: false
-                    }
                 },
             }
         },

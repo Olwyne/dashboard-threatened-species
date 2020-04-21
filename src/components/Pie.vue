@@ -25,9 +25,6 @@
                             color: 'black'
                         },
                     },
-                    legend: {
-                        show: false
-                    },
                     responsive: [
                         {
                             breakpoint: 768,
@@ -40,6 +37,9 @@
                             }
                         }
                     ],
+                    legend: {
+                        position: 'bottom',
+                    },
                     colors: [function ({ value }) {
                         if (value < 82) {
                             return '#8c106e' // EW
@@ -82,7 +82,7 @@
             getInfoAnimal() {
                 this.chartOptions = { labels: [], }
                 this.series = [];
-                const arrayOfId = ["EX", "EW", "CR", "EN", "VU", "NT", "LC", "DD"];
+                const arrayOfId = ["Extinct", "Extinct in the Wild", "Critically Endangered", "Endangered", "Vulnerable", "Near Threatened", "Least Concern", "Data Deficient"];
                 for (let i = 0; i < arrayOfId.length; i++) {
                     fetch('http://apiv3.iucnredlist.org/api/v3/species/category/' + arrayOfId[i] + '?token=9bb4facb6d23f48efbf424bb05c0c1ef1cf6f468393bc745d42179ac4aca5fee').then(res => res.json()).then(data => {
                         const result = data;

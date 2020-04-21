@@ -2,49 +2,33 @@
     <div>
         <b-container fluid class="dashboard-container">
             <b-row>
-              <b-col cols="12" md="6">
-                    <Pie2 />
-                </b-col>
                 <b-col cols="12" md="6">
-                    <HorizontalBarChart />
+                    <AnimalIDCard />
                 </b-col>
                 <b-col cols="12" md="6">
                     <ThreatEvolution />
                 </b-col>
-                <b-col cols="12" md="6">
+                <!--<b-col cols="12" md="6">
                     <Pie />
                 </b-col>
                 <b-col cols="12" md="6">
-                    <AnimalIDCard />
-                </b-col>
+                    <Pie2 />
+                </b-col>-->
             </b-row>
         </b-container>
-        <div class="laptop-legend">
-            <DashboardLegend />
-        </div>
-        <div class="fixed-bottom mobile-legend">
-            <b-collapse id="collapse-1">
-                <DashboardLegend />
-            </b-collapse>
-            <b-button v-b-toggle.collapse-1 class="btn btn-danger legend-button w-100">Legend</b-button>
-        </div>
     </div>
 </template>
 
 <script>
-    import Pie2 from './Pie2.vue'
-    import DashboardLegend from './DashboardLegend.vue'
-    import HorizontalBarChart from './HorizontalBarChart.vue'
-    import Pie from './Pie.vue'
+   /* import Pie2 from './Pie2.vue'
+    import Pie from './Pie.vue'*/
     import ThreatEvolution from './ThreatEvolution.vue'
     import AnimalIDCard from './AnimalIDCard.vue'
     export default {
         name: 'Dashboard',
         components: {
-            DashboardLegend,
-            HorizontalBarChart,
-            Pie,
-            Pie2,
+         /*   Pie,
+            Pie2,*/
             ThreatEvolution,
             AnimalIDCard
         },
