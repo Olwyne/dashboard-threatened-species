@@ -36,4 +36,4 @@ new Vue({
     }
 });*/
 
-fetch("http://www.bloowatch.org/developers/json/species").then(res => res.json()).then(data => console.log(data));
+//fetch("http://www.bloowatch.org/developers/json/species").then(res => res.json()).then(data => console.log(data));

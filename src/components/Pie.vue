@@ -94,7 +94,6 @@
             }
         },
         mounted: function () {
-
             this.updateChart()
             this.$root.$on('Pie', () => {
                 this.updateChart()
