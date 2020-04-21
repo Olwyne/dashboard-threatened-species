@@ -54,10 +54,11 @@
                 this.chartOptions = { labels: [], }
                 this.series = [];
                 const arrayOfId = ["eastern_africa", "northeastern_africa", "western_africa", "northern_africa", "central_africa", "pan-africa", "southern_africa", "mediterranean", "europe"];
+                const arrayOfName = ["Eastern Africa", "Northeastern Africa", "Western Africa", "Northern Africa", "Central Africa", "Pan Africa", "Southern Africa", "Mediterranean", "Europe"];
                 for (let i = 0; i < arrayOfId.length; i++) {
                     fetch('http://apiv3.iucnredlist.org/api/v3/speciescount/region/' + arrayOfId[i] + '?token=9bb4facb6d23f48efbf424bb05c0c1ef1cf6f468393bc745d42179ac4aca5fee').then(res => res.json()).then(data => {
                         const result = data;
-                        this.chartOptions.labels.push(arrayOfId[i]);
+                        this.chartOptions.labels.push(arrayOfName[i]);
                         this.series.push(parseInt(result.count));
                     });
                 }
